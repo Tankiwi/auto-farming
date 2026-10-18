@@ -1,0 +1,18 @@
+{
+  "date": "2026-10-18",
+  "source": "User-pasted Jetson terminal output; not independently rerun by agent",
+  "user_confirmation": "All servos have been manually tested; no new servo-6 log supplied",
+  "working_directory": "/home/jetson/farm-tools",
+  "deployed_source_hash": null,
+  "note": "Terminal prompts and arrow-key escape sequences omitted; JSON result fields preserved",
+  "results": [
+    {"motor_id":5,"requested_delta_deg":10.0,"duration_ms_per_direction":2000,"firmware":[3,5],"start_position":1478,"target_position":1601,"start_angle_deg":89.295,"target_angle_deg":99.298,"return_command_sent":true,"tolerance_units":15,"out_position":1596,"out_error_units":-5,"actual_delta_deg":9.596,"return_position":1484,"return_error_units":6,"status":"passed"},
+    {"motor_id":5,"requested_delta_deg":10.0,"duration_ms_per_direction":1000,"firmware":[3,5],"start_position":1483,"target_position":1606,"start_angle_deg":89.702,"target_angle_deg":99.705,"return_command_sent":true,"tolerance_units":15,"out_position":1602,"out_error_units":-4,"actual_delta_deg":9.678,"return_position":1489,"return_error_units":6,"status":"passed"},
+    {"motor_id":5,"requested_delta_deg":-10.0,"duration_ms_per_direction":1000,"firmware":[3,5],"start_position":1486,"target_position":1363,"start_angle_deg":89.946,"target_angle_deg":79.943,"return_command_sent":true,"tolerance_units":15,"out_position":1369,"out_error_units":6,"actual_delta_deg":-9.515,"return_position":1480,"return_error_units":-6,"status":"passed"},
+    {"motor_id":2,"requested_delta_deg":10.0,"duration_ms_per_direction":1000,"firmware":[3,5],"start_position":2032,"target_position":1910,"start_angle_deg":87.382,"target_angle_deg":97.364,"return_command_sent":true,"tolerance_units":15,"out_position":1908,"out_error_units":-2,"actual_delta_deg":10.145,"return_position":2030,"return_error_units":-2,"status":"passed"},
+    {"motor_id":2,"requested_delta_deg":-10.0,"duration_ms_per_direction":1000,"firmware":[3,5],"start_position":2030,"target_position":2152,"start_angle_deg":87.545,"target_angle_deg":77.564,"return_command_sent":true,"tolerance_units":15,"out_position":2152,"out_error_units":0,"actual_delta_deg":-9.982,"return_position":2032,"return_error_units":2,"status":"passed"},
+    {"motor_id":1,"requested_delta_deg":-10.0,"duration_ms_per_direction":1000,"firmware":[3,5],"start_position":2002,"target_position":2124,"start_angle_deg":89.836,"target_angle_deg":79.855,"return_command_sent":true,"tolerance_units":15,"out_position":2120,"out_error_units":-4,"actual_delta_deg":-9.655,"return_position":2006,"return_error_units":4,"status":"passed"},
+    {"motor_id":3,"requested_delta_deg":-10.0,"duration_ms_per_direction":1000,"firmware":[3,5],"start_position":1845,"target_position":1967,"start_angle_deg":102.682,"target_angle_deg":92.7,"return_command_sent":true,"tolerance_units":15,"out_position":1964,"out_error_units":-3,"actual_delta_deg":-9.736,"return_position":1847,"return_error_units":2,"status":"passed"},
+    {"motor_id":4,"requested_delta_deg":-10.0,"duration_ms_per_direction":1000,"firmware":[3,5],"start_position":1999,"target_position":2121,"start_angle_deg":90.082,"target_angle_deg":80.1,"return_command_sent":true,"tolerance_units":15,"out_position":2118,"out_error_units":-3,"actual_delta_deg":-9.736,"return_position":2002,"return_error_units":3,"status":"passed"}
+  ]
+}

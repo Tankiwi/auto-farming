@@ -33,7 +33,7 @@ flowchart TB
 | 位置 | 对象与职责 | 版本／验证状态 |
 |---|---|---|
 | 本地 [modules/arm/arm-noetic.sh](../modules/arm/arm-noetic.sh) | 教程容器创建、启动、命令转发、停止 | 2026-10-17 阅读；未执行；当前与设备副本一致性未复核 |
-| 本地 [modules/arm/arm.py](../modules/arm/arm.py) | 独立三参数 `test_motor(id, amplitude_deg, duration_ms)`：按库映射相对移动、反馈通过后返回，管理串口、不自动开启扭矩 | 2026-10-18 本地实现，10 项离线模拟测试；未上传、未真机复测，不宣称已修复无动作问题 |
+| 本地 [modules/arm/arm.py](../modules/arm/arm.py)；用户在 Jetson `/home/jetson/farm-tools/arm.py` 运行 | 独立三参数 `test_motor(id, amplitude_deg, duration_ms)`：按库映射相对移动、反馈通过后返回，管理串口、不自动开启扭矩 | 2026-10-18 十项离线测试；用户提供 1～5 号八次局部往返 passed；设备哈希未读回，前次无动作根因未定位，6 号新日志待补 |
 | 本地 [modules/arm/arm-check.py](../modules/arm/arm-check.py)；设备 `/home/jetson/farm-tools/arm-check.py` | 直接串口查询与显式选择的 6 号小幅往返；暂停/恢复已识别原厂程序，不开启全部扭矩 | 2026-10-18 首次部署核对 SHA-256；后续本地减 300、设备减 122，已出现差异，未覆盖/部署；现场动作通过、返回精度未通过，不是整臂驱动 |
 | Jetson `/home/jetson/farm-tools/arm-noetic.sh` | 上述脚本部署入口 | 2026-10-11 部署与 `core` 实测；未记录部署哈希 |
 | Jetson `/home/jetson/.bashrc` | 环境加载与车型、雷达、相机变量 | 变更及备份见软件环境文档 |
