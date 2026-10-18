@@ -23,6 +23,10 @@
       "target": "modules/arm/operations.md"
     },
     {
+      "source": "docs/references/rosmaster-protocol.md",
+      "target": "modules/arm/protocol.md"
+    },
+    {
       "source": "docs/environment/software.md",
       "target": "modules/arm/environment.md"
     },
@@ -81,6 +85,10 @@
     {
       "source": "docs/troubleshooting/README.md",
       "target": "modules/host/troubleshooting.md"
+    },
+    {
+      "source": "docs/references/basic-control-courses.md",
+      "target": "modules/chassis/vendor/basic-control/README.md"
     }
   ]
 }

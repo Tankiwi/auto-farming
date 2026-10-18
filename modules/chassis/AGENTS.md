@@ -2,6 +2,7 @@
 
 从本目录 [README.md](README.md) 开始，只展开任务需要的文件：
 
+- [基础控制资料](vendor/basic-control/README.md)：9 份课程、附件、来源及原文冲突。
 - [hardware.md](hardware.md)：接线与别名。
 - [environment.md](environment.md)：环境配置与整车启动限制。
 - [troubleshooting.md](troubleshooting.md)：已知故障与历史边界。

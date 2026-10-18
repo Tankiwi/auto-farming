@@ -3,6 +3,7 @@
 从本目录 [README.md](README.md) 开始，只展开任务需要的文件：
 
 - [operations.md](operations.md)：课程启动、检查、保存与停止。
+- [protocol.md](protocol.md)：底板功能码、数字含义与查询／控制区别。
 - [environment.md](environment.md)：宿主机与容器环境。
 - [vendor/README.md](vendor/README.md)：课程原件与原文疑点。
 

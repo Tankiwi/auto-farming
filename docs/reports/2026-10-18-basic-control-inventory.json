@@ -1,0 +1,234 @@
+{
+  "date": "2026-10-18",
+  "source": "用户提供的卖家目录：05、ROSMASTER基础控制教程",
+  "scope": "24 source files; 12 unique contents; 11 byte-preserved outputs and 1 redacted log; source directory unchanged",
+  "files": [
+    {
+      "path": "1、更新扩展板固件/001/1、更新扩展板固件(1).pdf",
+      "size": 212607,
+      "sha256": "67804374c61f33927586cbb74ebcaed4fe47adf5b1d8a3783ae5e383c6e75c27",
+      "new_path": "modules/chassis/vendor/basic-control/01-firmware-update.pdf",
+      "archived_size": 212607,
+      "archived_sha256": "67804374c61f33927586cbb74ebcaed4fe47adf5b1d8a3783ae5e383c6e75c27",
+      "action": "deduplicated; original bytes preserved"
+    },
+    {
+      "path": "1、更新扩展板固件/001/1、更新扩展板固件.pdf",
+      "size": 212607,
+      "sha256": "67804374c61f33927586cbb74ebcaed4fe47adf5b1d8a3783ae5e383c6e75c27",
+      "new_path": "modules/chassis/vendor/basic-control/01-firmware-update.pdf",
+      "archived_size": 212607,
+      "archived_sha256": "67804374c61f33927586cbb74ebcaed4fe47adf5b1d8a3783ae5e383c6e75c27",
+      "action": "deduplicated; original bytes preserved"
+    },
+    {
+      "path": "1、更新扩展板固件/mcuisp(1).exe",
+      "size": 2491392,
+      "sha256": "d1927ff203ee85e17839ed60e842ad7a5e7dcf31ad3e4a4fd61bfe7729d5aec2",
+      "new_path": "modules/chassis/vendor/basic-control/mcuisp.exe",
+      "archived_size": 2491392,
+      "archived_sha256": "d1927ff203ee85e17839ed60e842ad7a5e7dcf31ad3e4a4fd61bfe7729d5aec2",
+      "action": "deduplicated; original bytes preserved"
+    },
+    {
+      "path": "1、更新扩展板固件/mcuisp.exe",
+      "size": 2491392,
+      "sha256": "d1927ff203ee85e17839ed60e842ad7a5e7dcf31ad3e4a4fd61bfe7729d5aec2",
+      "new_path": "modules/chassis/vendor/basic-control/mcuisp.exe",
+      "archived_size": 2491392,
+      "archived_sha256": "d1927ff203ee85e17839ed60e842ad7a5e7dcf31ad3e4a4fd61bfe7729d5aec2",
+      "action": "deduplicated; original bytes preserved"
+    },
+    {
+      "path": "1、更新扩展板固件/ProgramLogs(1).txt",
+      "size": 2834,
+      "sha256": "889fafc993e04e5bb4e441933ed841caba13417f3b9e681128732601818e8fc1",
+      "new_path": "modules/chassis/vendor/basic-control/program-logs-redacted.txt",
+      "archived_size": 2199,
+      "archived_sha256": "bc04fa6dcc0fd597b5d193c866a2f9bfe9198a69a48c00ca9c01e7f7fa47d7d8",
+      "action": "redacted derivative; raw log not archived"
+    },
+    {
+      "path": "1、更新扩展板固件/ProgramLogs.txt",
+      "size": 2834,
+      "sha256": "889fafc993e04e5bb4e441933ed841caba13417f3b9e681128732601818e8fc1",
+      "new_path": "modules/chassis/vendor/basic-control/program-logs-redacted.txt",
+      "archived_size": 2199,
+      "archived_sha256": "bc04fa6dcc0fd597b5d193c866a2f9bfe9198a69a48c00ca9c01e7f7fa47d7d8",
+      "action": "redacted derivative; raw log not archived"
+    },
+    {
+      "path": "1、更新扩展板固件/Uart drive（CH340）(1).zip",
+      "size": 260676,
+      "sha256": "7f7564fca23992b73aa9bffa66e81749028722a4aad4e2debfc2925ac24ae30b",
+      "new_path": "modules/chassis/vendor/basic-control/ch340-driver.zip",
+      "archived_size": 260676,
+      "archived_sha256": "7f7564fca23992b73aa9bffa66e81749028722a4aad4e2debfc2925ac24ae30b",
+      "action": "deduplicated; original bytes preserved"
+    },
+    {
+      "path": "1、更新扩展板固件/Uart drive（CH340）.zip",
+      "size": 260676,
+      "sha256": "7f7564fca23992b73aa9bffa66e81749028722a4aad4e2debfc2925ac24ae30b",
+      "new_path": "modules/chassis/vendor/basic-control/ch340-driver.zip",
+      "archived_size": 260676,
+      "archived_sha256": "7f7564fca23992b73aa9bffa66e81749028722a4aad4e2debfc2925ac24ae30b",
+      "action": "deduplicated; original bytes preserved"
+    },
+    {
+      "path": "2、关闭开机自启动大程序/2、关闭开机自启动大程序(1).pdf",
+      "size": 378891,
+      "sha256": "a7026b18327c58644e3a6462a4cade6b3b3a97331bc12525fa95d3818398e024",
+      "new_path": "modules/chassis/vendor/basic-control/02-disable-autostart.pdf",
+      "archived_size": 378891,
+      "archived_sha256": "a7026b18327c58644e3a6462a4cade6b3b3a97331bc12525fa95d3818398e024",
+      "action": "deduplicated; original bytes preserved"
+    },
+    {
+      "path": "2、关闭开机自启动大程序/2、关闭开机自启动大程序.pdf",
+      "size": 378891,
+      "sha256": "a7026b18327c58644e3a6462a4cade6b3b3a97331bc12525fa95d3818398e024",
+      "new_path": "modules/chassis/vendor/basic-control/02-disable-autostart.pdf",
+      "archived_size": 378891,
+      "archived_sha256": "a7026b18327c58644e3a6462a4cade6b3b3a97331bc12525fa95d3818398e024",
+      "action": "deduplicated; original bytes preserved"
+    },
+    {
+      "path": "3、安装Rosmaster驱动库/3、安装Rosmaster驱动库(1).pdf",
+      "size": 416022,
+      "sha256": "2cd986c3f41425f2bcf7a650469c9d0697c5e454cf320f968422f04438e6c91b",
+      "new_path": "modules/chassis/vendor/basic-control/03-install-driver-library.pdf",
+      "archived_size": 416022,
+      "archived_sha256": "2cd986c3f41425f2bcf7a650469c9d0697c5e454cf320f968422f04438e6c91b",
+      "action": "deduplicated; original bytes preserved"
+    },
+    {
+      "path": "3、安装Rosmaster驱动库/3、安装Rosmaster驱动库.pdf",
+      "size": 416022,
+      "sha256": "2cd986c3f41425f2bcf7a650469c9d0697c5e454cf320f968422f04438e6c91b",
+      "new_path": "modules/chassis/vendor/basic-control/03-install-driver-library.pdf",
+      "archived_size": 416022,
+      "archived_sha256": "2cd986c3f41425f2bcf7a650469c9d0697c5e454cf320f968422f04438e6c91b",
+      "action": "deduplicated; original bytes preserved"
+    },
+    {
+      "path": "4、蜂鸣器鸣笛/4、蜂鸣器鸣笛(1).pdf",
+      "size": 273554,
+      "sha256": "82910074a706c5a051d9318cf31a297db3c5e8a2e968694541d24105413c077f",
+      "new_path": "modules/chassis/vendor/basic-control/04-buzzer.pdf",
+      "archived_size": 273554,
+      "archived_sha256": "82910074a706c5a051d9318cf31a297db3c5e8a2e968694541d24105413c077f",
+      "action": "deduplicated; original bytes preserved"
+    },
+    {
+      "path": "4、蜂鸣器鸣笛/4、蜂鸣器鸣笛.pdf",
+      "size": 273554,
+      "sha256": "82910074a706c5a051d9318cf31a297db3c5e8a2e968694541d24105413c077f",
+      "new_path": "modules/chassis/vendor/basic-control/04-buzzer.pdf",
+      "archived_size": 273554,
+      "archived_sha256": "82910074a706c5a051d9318cf31a297db3c5e8a2e968694541d24105413c077f",
+      "action": "deduplicated; original bytes preserved"
+    },
+    {
+      "path": "5、控制PWM舵机/5、控制PWM舵机(1).pdf",
+      "size": 425994,
+      "sha256": "8d65d46044a9074bb61861ffe12c4bab45b2cdb21fc55a4bb11b5e984cf714f3",
+      "new_path": "modules/chassis/vendor/basic-control/05-pwm-servo.pdf",
+      "archived_size": 425994,
+      "archived_sha256": "8d65d46044a9074bb61861ffe12c4bab45b2cdb21fc55a4bb11b5e984cf714f3",
+      "action": "deduplicated; original bytes preserved"
+    },
+    {
+      "path": "5、控制PWM舵机/5、控制PWM舵机.pdf",
+      "size": 425994,
+      "sha256": "8d65d46044a9074bb61861ffe12c4bab45b2cdb21fc55a4bb11b5e984cf714f3",
+      "new_path": "modules/chassis/vendor/basic-control/05-pwm-servo.pdf",
+      "archived_size": 425994,
+      "archived_sha256": "8d65d46044a9074bb61861ffe12c4bab45b2cdb21fc55a4bb11b5e984cf714f3",
+      "action": "deduplicated; original bytes preserved"
+    },
+    {
+      "path": "6、RGB炫彩灯条特效展示/6、RGB炫彩灯条特效展示(1).pdf",
+      "size": 298635,
+      "sha256": "9bb6b939abdfcf2b6c2126a61357036ad031558a929d7c08cb3485b785e2810e",
+      "new_path": "modules/chassis/vendor/basic-control/06-rgb-effects.pdf",
+      "archived_size": 298635,
+      "archived_sha256": "9bb6b939abdfcf2b6c2126a61357036ad031558a929d7c08cb3485b785e2810e",
+      "action": "deduplicated; original bytes preserved"
+    },
+    {
+      "path": "6、RGB炫彩灯条特效展示/6、RGB炫彩灯条特效展示.pdf",
+      "size": 298635,
+      "sha256": "9bb6b939abdfcf2b6c2126a61357036ad031558a929d7c08cb3485b785e2810e",
+      "new_path": "modules/chassis/vendor/basic-control/06-rgb-effects.pdf",
+      "archived_size": 298635,
+      "archived_sha256": "9bb6b939abdfcf2b6c2126a61357036ad031558a929d7c08cb3485b785e2810e",
+      "action": "deduplicated; original bytes preserved"
+    },
+    {
+      "path": "7、控制电机正转反转/7、控制电机正转反转(1).pdf",
+      "size": 289659,
+      "sha256": "ace37548dde2afb9f6a2698e7c2dd0bcf619d1061430cccda1430dd8b1b2309b",
+      "new_path": "modules/chassis/vendor/basic-control/07-motor-control.pdf",
+      "archived_size": 289659,
+      "archived_sha256": "ace37548dde2afb9f6a2698e7c2dd0bcf619d1061430cccda1430dd8b1b2309b",
+      "action": "deduplicated; original bytes preserved"
+    },
+    {
+      "path": "7、控制电机正转反转/7、控制电机正转反转.pdf",
+      "size": 289659,
+      "sha256": "ace37548dde2afb9f6a2698e7c2dd0bcf619d1061430cccda1430dd8b1b2309b",
+      "new_path": "modules/chassis/vendor/basic-control/07-motor-control.pdf",
+      "archived_size": 289659,
+      "archived_sha256": "ace37548dde2afb9f6a2698e7c2dd0bcf619d1061430cccda1430dd8b1b2309b",
+      "action": "deduplicated; original bytes preserved"
+    },
+    {
+      "path": "8、控制机器人运动/8、控制机器人运动(1).pdf",
+      "size": 160744,
+      "sha256": "eade2babc410c41ab8acb9c0eb0b59b9be69c8424f35179f1ea8b72fbfecbac6",
+      "new_path": "modules/chassis/vendor/basic-control/08-car-motion.pdf",
+      "archived_size": 160744,
+      "archived_sha256": "eade2babc410c41ab8acb9c0eb0b59b9be69c8424f35179f1ea8b72fbfecbac6",
+      "action": "deduplicated; original bytes preserved"
+    },
+    {
+      "path": "8、控制机器人运动/8、控制机器人运动.pdf",
+      "size": 160744,
+      "sha256": "eade2babc410c41ab8acb9c0eb0b59b9be69c8424f35179f1ea8b72fbfecbac6",
+      "new_path": "modules/chassis/vendor/basic-control/08-car-motion.pdf",
+      "archived_size": 160744,
+      "archived_sha256": "eade2babc410c41ab8acb9c0eb0b59b9be69c8424f35179f1ea8b72fbfecbac6",
+      "action": "deduplicated; original bytes preserved"
+    },
+    {
+      "path": "9、控制串口舵机/控制串口舵机(1).pdf",
+      "size": 305054,
+      "sha256": "c5beb7911820c57294222af2c949404c622c24525d603f1cc214f71c1d2589be",
+      "new_path": "modules/chassis/vendor/basic-control/09-uart-servo.pdf",
+      "archived_size": 305054,
+      "archived_sha256": "c5beb7911820c57294222af2c949404c622c24525d603f1cc214f71c1d2589be",
+      "action": "deduplicated; original bytes preserved"
+    },
+    {
+      "path": "9、控制串口舵机/控制串口舵机.pdf",
+      "size": 305054,
+      "sha256": "c5beb7911820c57294222af2c949404c622c24525d603f1cc214f71c1d2589be",
+      "new_path": "modules/chassis/vendor/basic-control/09-uart-servo.pdf",
+      "archived_size": 305054,
+      "archived_sha256": "c5beb7911820c57294222af2c949404c622c24525d603f1cc214f71c1d2589be",
+      "action": "deduplicated; original bytes preserved"
+    }
+  ],
+  "pdf_pages": {
+    "01-firmware-update.pdf": 3,
+    "02-disable-autostart.pdf": 3,
+    "03-install-driver-library.pdf": 7,
+    "04-buzzer.pdf": 2,
+    "05-pwm-servo.pdf": 2,
+    "06-rgb-effects.pdf": 2,
+    "07-motor-control.pdf": 2,
+    "08-car-motion.pdf": 3,
+    "09-uart-servo.pdf": 2
+  }
+}

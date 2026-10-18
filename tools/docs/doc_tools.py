@@ -203,6 +203,21 @@ def check(rows):
             preserved += 1
             if digest(path) != row['sha256']:
                 errors.append('Original bytes changed: ' + row['new_path'])
+    vendor_inventory = json.loads(text(ROOT / 'docs/reports/2026-10-18-basic-control-inventory.json'))
+    archived = {}
+    for row in vendor_inventory['files']:
+        name = row['new_path']
+        expected_file = (row['archived_size'], row['archived_sha256'])
+        if name in archived and archived[name] != expected_file:
+            errors.append('Conflicting vendor inventory: ' + name)
+        archived[name] = expected_file
+        if row['action'] == 'deduplicated; original bytes preserved':
+            if (row['size'], row['sha256']) != expected_file:
+                errors.append('Original vendor hash differs: ' + name)
+    for name, (size, sha256) in archived.items():
+        path = inside(name)
+        if not path.is_file() or path.stat().st_size != size or digest(path) != sha256:
+            errors.append('Vendor archive missing or changed: ' + name)
     base = ROOT / 'skills/robot-doc-governance'
     expected = {'robot-doc-governance/' + p.relative_to(base).as_posix(): p.read_bytes()
                 for p in base.rglob('*') if p.is_file() and '__pycache__' not in p.parts}
@@ -212,7 +227,7 @@ def check(rows):
                 errors.append('Skill ZIP differs from source; run pack')
     except (OSError, zipfile.BadZipFile) as exc:
         errors.append(f'Skill package: {exc}')
-    print(f'Markdown: {len(markdown)}; local links: {count}; mirrors: {len(rows)}; preserved originals: {preserved}')
+    print(f'Markdown: {len(markdown)}; local links: {count}; mirrors: {len(rows)}; preserved originals: {preserved}; vendor archive: {len(archived)}')
     for error in errors:
         print('ERROR: ' + error)
     print(f'Errors: {len(errors)}')

@@ -2,6 +2,7 @@
 
 从本目录 [README.md](README.md) 开始，只展开任务需要的文件：
 
+- [厂商自启动与驱动安装参考](../../docs/references/basic-control-courses.md)：第 02—03 课及适配边界。
 - [remote-access.md](remote-access.md)：登录与桌面。
 - [environment.md](environment.md)：软件配置。
 - [hardware.md](hardware.md)：硬件与连接。

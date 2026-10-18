@@ -4,7 +4,7 @@
 
 | 模块 | 本地内容 | 入口 |
 |---|---|---|
-| 机械臂 | 教程脚本、厂商课程、操作与环境副本 | [arm](arm/README.md) |
+| 机械臂 | 教程与单舵机测试脚本、厂商课程、操作与环境副本 | [arm](arm/README.md) |
 | 感知 | 雷达／相机文档；设备源码尚未归档 | [sensors](sensors/README.md) |
 | 底盘 | 自定义固件交接要求；源码尚未归档 | [chassis](chassis/README.md) |
 | 主机 | 网络、系统环境和排障文档；主机配置快照尚未归档 | [host](host/README.md) |

@@ -1,0 +1,219 @@
+{
+  "main": {
+    "id": "96b7d824254acf1a",
+    "type": "split",
+    "children": [
+      {
+        "id": "6c9a0812dc1763e2",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c288b74d625fbf95",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "AGENTS.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "AGENTS"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "3630a90b3e62a446",
+    "type": "split",
+    "children": [
+      {
+        "id": "13d378feac21e6a4",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "6fda7d66819fa998",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-folder-closed",
+              "title": "文件列表"
+            }
+          },
+          {
+            "id": "cd21a984a8e6a3ba",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
+            }
+          },
+          {
+            "id": "d8d22bd65e9b0683",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-bookmark",
+              "title": "书签"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "aedea19704fd1caa",
+    "type": "split",
+    "children": [
+      {
+        "id": "6d9845736e1b36d1",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "4d075ea4e18af426",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "AGENTS.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "反向链接"
+            }
+          },
+          {
+            "id": "7e1932bbea0d6fce",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "AGENTS.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "出链"
+            }
+          },
+          {
+            "id": "ef12611f5fe0e2d0",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "标签"
+            }
+          },
+          {
+            "id": "034f1122563f7b1c",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "添加笔记属性"
+            }
+          },
+          {
+            "id": "c5987d610bbc51a9",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "AGENTS.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "大纲"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false,
+      "bases:新建数据库": false
+    }
+  },
+  "active": "c288b74d625fbf95",
+  "lastOpenFiles": [
+    "modules/arm/vendor/05-cartesian-path.pdf",
+    "modules/arm/vendor/04-moveit-kinematics.pdf",
+    "modules/arm/vendor/03-random-motion.pdf",
+    "modules/arm/vendor/02-moveit-simulation-and-hardware.pdf",
+    "modules/arm/vendor/14-color-transport.pdf",
+    "modules/arm/vendor/13-mediapipe-palm-tracking.pdf",
+    "modules/arm/vendor/12-mediapipe-arm-pose.pdf",
+    "modules/arm/vendor/11-mediapipe-chassis-gestures.pdf",
+    "modules/arm/vendor/10-mediapipe-arm-gestures.pdf",
+    "modules/arm/vendor/09-mediapipe-hand-control.pdf",
+    "modules/arm/vendor/15-autopilot-obstacle-clearing.pdf",
+    "docs/status.md",
+    "docs/README.md",
+    "docs/pending.md",
+    "docs/maintenance.md",
+    "docs/architecture.md",
+    "docs/modules/sensors.md",
+    "docs/modules/host.md",
+    "docs/modules/chassis.md",
+    "docs/modules/arm.md",
+    "docs/guides/remote-access.md",
+    "docs/guides/sensors.md",
+    "docs/guides/README.md",
+    "docs/guides/data-recording.md",
+    "docs/guides/arm.md"
+  ]
+}

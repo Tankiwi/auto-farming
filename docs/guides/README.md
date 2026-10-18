@@ -9,7 +9,8 @@
 3. 传感器任务按[软件环境](../environment/software.md)准备 Jetson 宿主机 Humble，再按[传感器指南](sensors.md)启动、查数据、停止。
 4. 机械臂课程按[Noetic 教程指南](arm.md)进入独立容器，按该指南保存配置和停止。master、图形窗口、模型加载、仿真规划、真机控制分别验收。
 5. [数据录制与回放](data-recording.md)仍为待验证模板；先复核磁盘和输出目录。
-6. 出错时看[故障排查](../troubleshooting/README.md)。恢复底盘开发先补[自定义固件资料](../modules/chassis.md)。
+6. 查自启动、驱动安装和底板基础功能时，读[厂商基础控制资料](../references/basic-control-courses.md)；这是待适配的参考，先核对版本、串口占用、回退与停止条件。
+7. 出错时看[故障排查](../troubleshooting/README.md)。恢复底盘开发先补[自定义固件资料](../modules/chassis.md)。
 
 这些流程用于已有记录的环境。启动成功不等于当前设备、底盘协议或停止行为已确认。固件、部署版本及整车导航缺口统一维护在[待验证清单](../pending.md)。
 
