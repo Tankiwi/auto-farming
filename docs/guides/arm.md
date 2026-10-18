@@ -51,7 +51,7 @@ bash /home/jetson/farm-tools/arm-noetic.sh setup
 /root/yahboomcar_ws/src/yahboomcar_description/urdf/yahboomcar_X3plus.urdf
 ```
 
-此文件存在已核对，模型加载、碰撞矩阵和规划组配置仍需按课程逐步验收。新生成的配置包保存为 `/root/farm_data/x3plus_moveit_config_tutorial`，避免覆盖预装配置。
+预装模型、碰撞矩阵和规划组已于 2026-10-11 按第 1 课核对，隔离容器内模型加载与 6/6 fake 规划执行通过，见[历史验收](../reports/2026-10-11-moveit-configuration.md)。从零生成配置流程仍未验收。新生成的配置包保存为 `/root/farm_data/x3plus_moveit_config_tutorial`，避免覆盖预装配置。
 
 若只是查看已有配置，可选择 `Edit Existing MoveIt Configuration Package`，目录为 `/root/yahboomcar_ws/src/x3plus_moveit_config`。不要把“已有配置存在”理解为实物关节零位、限位或底板协议已经验证。
 
@@ -92,7 +92,42 @@ rospack find x3plus_moveit_config
 
 桌面重新登录或小车重启后，X11 认证文件可能变化。若 `core` 正常但助手提示无法连接显示，先核对当前桌面的 `DISPLAY` 与 `XAUTHORITY`，不要直接执行 `xhost +`。旧容器可能需要在保存配置后重新创建以更新认证挂载；不要未经备份就删除容器。
 
-2026-10-11 完成 ROS master 和软件环境检查，容器内 `xdpyinfo` 成功，并通过 `xwininfo` 确认配置助手已创建标题为 `MoveIt Setup Assistant` 的 1090×600 窗口。测试程序结束，容器保留并停止，执行第一步即可重启。未截图核对窗口内容。模型加载、配置生成、RViz 规划、真实舵机通信与运动、远程桌面画面验收分别记录，不能用 `roscore` 成功替代。
+2026-10-11 完成 ROS master 和软件环境检查，容器内 `xdpyinfo` 成功，并通过 `xwininfo` 确认配置助手已创建标题为 `MoveIt Setup Assistant` 的 1090×600 窗口。测试程序结束，容器保留并停止，执行第一步即可重启。未截图核对窗口内容。同日后续模型加载、第 1 课 6/6 fake 规划执行与第 2～8 课仿真记录已从 dev 迁入，见下节；从零配置生成、RViz 与远程桌面画面仍未验收。2026-10-18 宿主机单舵机结果另见真机入口，不能据此认定 MoveIt 真机链路通过。
+
+## 课程仿真复现
+
+依据为 dev 的 2026-10-11 历史记录，2026-10-18 仅迁移；当前容器、配置和补丁是否仍与当时一致需复核。适用 `farm-arm-noetic`、Noetic 3.0.5、`/root/yahboomcar_ws`。容器必须保持 `--network none` 且无串口/USB 映射，只使用 `sim:=true` 和 fake 控制器。验证脚本自身不检查隔离条件，不用于真机。
+
+1. 需要部署验证脚本时，在 Windows PowerShell 仓库根执行（本次未上传）：
+
+   ```powershell
+   scp .\modules\arm\verify-moveit-sim.py jetson@192.168.43.53:/home/jetson/farm-arm-data/verify_moveit_sim.py
+   ```
+
+   地址沿用 2026-10-18 记录，使用前核对；目标对应容器 `/root/farm_data/verify_moveit_sim.py`。已有不同文件先备份，部署后核对两端 SHA-256。
+
+2. 在 Jetson 宿主机进入容器，编译并保持仿真终端运行；若前面手动启动过 `core`，沿用同一 master，不重复启动：
+
+   ```bash
+   bash /home/jetson/farm-tools/arm-noetic.sh shell
+   cd /root/yahboomcar_ws
+   catkin_make
+   roslaunch arm_moveit_demo x3plus_moveit_demo.launch sim:=true use_rviz:=false use_gui:=false
+   ```
+
+3. 第二个 Jetson 终端也用 `arm-noetic.sh shell` 进入同一容器，再执行：
+
+   ```bash
+   python3 /root/farm_data/verify_moveit_sim.py
+   ```
+
+   预期 `RESULT: 6/6 passed` 且退出码为 0，覆盖 arm_group 的 down/int/up/随机目标及 grip_group 的 open/close。非零或异常先停止并检查环境、模型与命名，不切到 `sim:=false` 排错。第 2～8 课逐课命令、结果和补丁见[验收报告](../reports/2026-10-11-moveit-courses-2-8.md)。
+
+4. 每次只运行一个示例；随机循环在示例终端 `Ctrl+C` 结束，再停止 launch；若单独启动了 core，也在其终端停止。最后宿主机执行 `bash /home/jetson/farm-tools/arm-noetic.sh stop`，用 `docker inspect -f '{{.State.Running}}' farm-arm-noetic` 确认 `false`。停止容器不删除它，生成配置保存在挂载目录；这是软件仿真停止，不代表真机急停。
+
+课程已知问题：SRDF 位姿为 `int`，第 7 课 `06_set_Scene.py` 的 `init` 需先备份再改为 `int`，重建容器会丢失未持久化补丁；第 4 课 Python 反解例程曾有 x≈111 m 坐标，历史练习使用 C++ `02_set_pose_plan`；管道运行 Python 用 `PYTHONUNBUFFERED=1`。原版/补丁版曾备份在 `/root/farm_data`，本次未读取设备或将其归档到本地。
+
+第 6 课记录为 10 次规划中 6 成功、4 超时；碰撞受限场景下失败与课程现象一致，但只有摘要，缺少完整日志，不能逐次证明超时原因。第 2 课 `SimulationToMachine.py → TargetAngle → bringup → 串口` 仅为历史链路核对，未打通 MoveIt 真机执行；当前宿主机 `arm.py` 局部测试是另一条路径。
 
 ## 2026-10-18：恢复真机接入前的只读检查
 

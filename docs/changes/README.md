@@ -17,6 +17,31 @@
 - 交付状态：测试程序停止，教程容器保留并停止；用户执行 `core` 即可重新启动。脚本 Bash 语法检查通过，文档本地链接检查通过。
 - 未验证：URDF 加载、完整 MoveIt 配置生成、规划效果、实际机械臂控制。底板自定义固件兼容性仍待核对。
 
+> 以下两条于 2026-10-18 从 dev `60399af` 迁入，记录日期与设备状态仍为 2026-10-11；当前真机结果见[状态](../status.md)。
+
+## 2026-10-11：第一课 MoveIt 配置包核对与仿真规划验证通过
+
+- 需求：完成《[1、MoveIt配置.pdf](../../modules/arm/vendor/01-moveit-setup.pdf)》要求的 MoveIt 配置与验证。PDF 为虚拟机 GUI 流程，本机改为核对容器内预装成品包并做仿真验收，完成预装包核对与 fake 控制器验证；不表示从零生成流程已验收。
+- 证据（配置核对）：SRDF 中 `arm_group`（arm_joint1..5，KDL，超时 0.01）、`grip_group`（六连杆）、位姿 up/down/int/close/open、末端执行器 gripper（arm_link5）、完整碰撞免检矩阵均与 PDF 各步骤对应；`ros_controllers.yaml` 含 `arm_position_controller`（position_controllers/JointTrajectoryController）。注意 PDF 写位姿名 `init`，SRDF 实际为 `int`。
+- 证据（编译）：容器内 `catkin_make` 无重编项，直接通过。
+- 证据（启动）：`roslaunch arm_moveit_demo x3plus_moveit_demo.launch sim:=true use_rviz:=false use_gui:=false` 启动成功，`move_group` 加载模型 `yahboomcar_X3plus` 及全部规划/执行/运动学服务；节点 `/move_group`、`/joint_state_publisher`、`/robot_state_publisher`。
+- 证据（规划）：自写脚本 `modules/arm/verify-moveit-sim.py`（经 `/root/farm_data` 挂载进入容器）逐项验证 6/6 通过：arm_group down/int/up/随机目标，grip_group open/close。
+- 发现：`arm_moveit_demo/scripts/02_set_pose_plan.py` 位姿目标 x≈111 m，超出工作空间，规划失败属厂商示例数据问题，非环境故障。
+- 停止后状态：本次启动的 MoveIt 节点已全部停止，容器保留。
+- 未验证：RViz 图形画面、Setup Assistant 从零重新生成练习、真实机械臂控制（仿真通过不代表真机可用）。
+- 详细文档：[MoveIt配置与仿真验证](../reports/2026-10-11-moveit-configuration.md)。
+
+## 2026-10-11：机械臂课程 2~8 课仿真验收完成，修复 `init` 位姿名冲突
+
+- 需求：完成《16、机械臂控制课程》第 1~8 课。第 1 课已完成（见上条）；本次完成 2~8 课仿真部分。
+- 证据：统一以 `sim:=true use_rviz:=false use_gui:=false` 启动后逐课运行官方示例——第 3 课 py/C++ 随机移动关节角实测变化；第 4 课反解、正解均 `plan success`（正解末态与目标关节角一致）；第 5 课笛卡尔路径执行成功；第 6 课障碍物场景 10 次随机规划 6 成功 4 次 `ABORTED: TIMED_OUT`（触及障碍物，预期）；第 7 课打补丁后 5 次往返规划全部执行；第 8 课三段轨迹合并执行至 `Finished`。
+- 发现并修复：`06_set_Scene.py` 调用 `set_named_target("init")` 崩溃，根因是 SRDF 位姿名为 `int`（与第一课发现的 PDF/SRDF 命名差异同源）。已改容器内脚本为 `int`，原版与补丁版均备份于 `/root/farm_data/`。
+- 发现：容器内 Python 版 `02_set_pose_plan.py` 目标坐标 x≈111 m（C++ 版 0.187 m），反解练习必须用 C++ 版。
+- 边界确认：第 2 课真机部分未执行——教程容器无串口/USB 映射（`--network none`），真机链路为 `SimulationToMachine.py`→`TargetAngle`→bringup 驱动→串口舵机，需团队决策新建映射容器或修复原厂脚本并在人员现场条件下进行。本次未向真实硬件发送指令。
+- 停止后状态：仿真节点全部停止，容器保留。
+- 未验证：RViz 图形画面与轨迹可视化、手柄控制、真实舵机通信与运动。
+- 详细文档：[MoveIt课程2-8课仿真验收](../reports/2026-10-11-moveit-courses-2-8.md)。
+
 ## CHG-20261012-01：文档库架构与维护规范落地
 
 > 其中目录、必填元信息与多模板方案已由下方 CHG-20261012-02 精简版取代；本条保留初版工作记录。
@@ -35,7 +60,7 @@
 ## CHG-20261012-02：精简文档规范与 agent skill
 
 - 日期：2026-10-12。
-- 证据：读取用户提供的 [原 skill 压缩包](https://github.com/SunBuEr901/auto-farming/blob/main/robot-doc-governance-skill.zip) 内 SKILL、规则和模板，结合现有本地文档。原包缺少标准 skill frontmatter；其模型政策仍为未指定占位值。
+- 证据：读取用户提供的 [原 skill 压缩包](https://github.com/SunBuEr901/auto-farming/blob/b7d71639f6e051ed366102f6e3f78e1b68a73bf2/robot-doc-governance-skill.zip) 内 SKILL、规则和模板，结合现有本地文档。原包缺少标准 skill frontmatter；其模型政策仍为未指定占位值。
 - 操作：保留证据约束、历史追溯、正式流程与实验记录分离；规范改为四类核心文档与最小更新规则，压缩模板及首页。新增 `skills/robot-doc-governance/`，仅含 SKILL.md 和界面配置；同步项目入口约定、使用说明 v1.3、状态和根 README。
 - 取舍：不沿用强制模型白名单、多目录和八套模板；凭据遵守本项目禁止保存秘密信息的约定。此版取代初版较重的组织要求，未改变设备验收结论。
 - 结果：精简规范 63 行、模板 33 行、skill 主文件 51 行。官方 `quick_validate.py`、界面 YAML、全部本地链接与锚点、`git diff --check` 检查通过；交付 ZIP 仅含两个文件，解压内容与源码逐字节一致。校验器所需 PyYAML 原环境缺失，使用临时依赖完成检查，未写入 skill 或全局 Python 环境。
@@ -150,6 +175,15 @@
 - 本地操作：归档数据与[说明](../reports/2026-10-18-arm-servo-test.md)，更新状态、待验证、指南、模块正文、架构和根入口，区分用户日志、用户确认和 agent 历史实测；同步生成副本并检查。
 - 取代与边界：新日志取代“1～5 号当前不动作”，保留历史失败和超时；不推断前次根因、扭矩切换或代码一致性。6 号记为用户确认已测，新反馈精度日志待补。长周期、带载、完整限位、联动、急停与独立测角仍未验收。
 - 结束状态：仅本地证据/文档更新，未连接、重新测试、修改代码或部署，未提交/推送；用户日志证明 arm.py 已在设备运行，文件哈希未读回。
+
+## 2026-10-18：main 采用模块结构并迁入 dev 历史课程知识
+
+- 证据：对照远端 main `b7d7163`、结构分支 `715bb06`、dev `60399af` 的提交图与全部差异，详见[迁移记录](../reports/2026-10-18-branch-migration.md)。
+- 操作：保留三个未提交文档更新，先普通合并 main 与结构分支并推送，再将 dev 历史按新目录合并；迁入两份课程验收报告和一个字节不变的验证脚本，更新指南、状态、架构、排障、参考索引与模块副本。旧通用指南保留 Git 历史入口，未恢复被 main 删除的根长文；移除旧 skill ZIP，保留当前 dist 包。
+- 结果：补齐 2026-10-11 第 1 课 6/6 fake 执行与第 2～8 课仿真知识，保留 2026-10-18 用户真机证据。第 6 课 6 成功/4 超时按实际记录表达，旧结论注明取代关系，不把仿真、局部舵机测试和 MoveIt 真机链路混为一项。
+- 归档修复：切换分支后脱敏日志因 Git 换行转换未通过原清单哈希；按原 SHA-256 恢复 2199 字节，并对该路径禁用文本转换，未改日志正文或历史清单。
+- 验证：文档同步与检查、原 dev 脚本 SHA-256 一致、Python 语法与现有十项单舵机离线测试、合并冲突及差异空白检查通过；本轮未运行 ROS、连接设备、部署或复测硬件。
+- 未验证：历史容器与补丁当前一致性、完整日志、从零配置生成、RViz 画面、MoveIt 真机联动和既有硬件待验证项。远端 dev 与结构分支保留。
 
 ## 记录模板
 

@@ -7,6 +7,9 @@
 | 现象 | 历史判断与本次排查入口 |
 |---|---|
 | `roscore: command not found` | 历史原因是终端为 ROS 2 Humble、教程要求 ROS 1；再次遇到时先核对终端环境；使用[机械臂环境](../environment/software.md#机械臂课程使用-ros-1-noetic-容器)的 Noetic 容器入口 |
+| `Unable to set target init` | 历史 SRDF 预设为 `int`；第 7 课先备份后修改，见[仿真复现](../guides/arm.md#课程仿真复现)，重建容器后复核补丁 |
+| Python 反解目标规划失败 | 历史 `02_set_pose_plan.py` 有 x≈111 m；核对当前源码，历史练习用 C++ 版，不用不可达例子判断环境故障 |
+| Python 示例似乎无输出 | 管道或 timeout 可能丢失缓冲输出，使用 `PYTHONUNBUFFERED=1`；仍以退出码、规划及反馈判断 |
 | ROS 节点列表为空 | 历史测试结束时已关闭驱动；当前原因需先检查驱动进程、报错与[ROS 2 环境准备](../environment/software.md#每个-ros-终端的环境准备)环境，再决定是否启动，避免重复占用设备 |
 | 雷达 A1 驱动超时 | 实物为 YDLIDAR TG30，按[传感器指南](../guides/sensors.md)核对设备并使用 YDLIDAR 命令 |
 | `/dev/myserial` 消失 | 核对底盘数据线及 USB 枚举；拔插对照已证明此别名对应底盘 |

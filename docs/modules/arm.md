@@ -4,8 +4,9 @@
 
 本模块目前用于 ROS 1 Noetic 课程准备。本地实现是 [arm-noetic.sh](../../modules/arm/arm-noetic.sh)，并非机械臂驱动。它管理 `farm-arm-noetic` 容器，使用 `yahboomtechnology/ros-noetic:3.0.5`；网络为 `none`，不映射 USB 或串口，借用 X11 显示，数据目录由执行用户的 `$HOME/farm-arm-data` 挂载到 `/root/farm_data`。
 
-另有 [arm-check.py](../../modules/arm/arm-check.py)，在 Jetson 宿主机直接查询底板及舵机位置，显式选择后可测试 6 号小幅往返。已部署 `/home/jetson/farm-tools/arm-check.py` 并核对哈希；版本应答、位置读取和 6 号现场动作已验证，返回精度未通过，急停与其他关节待验收。前提、命令与停止边界见[真机入口](../guides/arm.md#2026-10-18真机单舵机入口)。
+另有 [arm-check.py](../../modules/arm/arm-check.py)，在 Jetson 宿主机直接查询底板及舵机位置，显式选择后可测试 6 号小幅往返。已部署 `/home/jetson/farm-tools/arm-check.py` 并核对哈希；版本应答、位置读取和 6 号现场动作已验证，返回精度未通过，这是当时的阶段结果；后续 1～5 号用户日志见下文，急停仍待验收。前提、命令与停止边界见[真机入口](../guides/arm.md#2026-10-18真机单舵机入口)。
 
+- 仿真验证脚本：[verify-moveit-sim.py](../../modules/arm/verify-moveit-sim.py)，原 dev 脚本字节不变；[复现与停止](../guides/arm.md#课程仿真复现)。
 - 启动、检查、保存与停止：[操作指南](../guides/arm.md)。
 - 三参数封装函数：[arm.py](../../modules/arm/arm.py) 的 `test_motor(编号, 相对角度, 单程毫秒数)`；[调用与上传说明](../guides/arm.md#三参数封装测试函数)。用户已在 Jetson 运行并提供 1～5 号八次通过日志，设备文件哈希尚未读回。
 - 宿主机与 ROS 环境区别：[软件环境](../environment/software.md)。
@@ -13,7 +14,7 @@
 - 厂商课程与资料疑点：[课程索引](../references/arm-courses.md)。
 - 全局源码定位：[架构地图](../architecture.md)；未归档的远端源码不能当成本地实现。
 
-历史课程验证覆盖容器 master 与配置助手窗口存在；模型加载、配置生成、规划未验收。课程脚本位于 `/home/jetson/farm-tools/arm-noetic.sh`，2026-10-17 只移动本地文件，未重新部署或核对其远端哈希；2026-10-18 的真机验证由独立的 `arm-check.py` 完成。
+历史课程验证覆盖容器 master 与配置助手窗口存在；dev 的 2026-10-11 记录补充了[第 1 课配置核对与 6/6 fake 规划执行](../reports/2026-10-11-moveit-configuration.md)及[第 2～8 课仿真](../reports/2026-10-11-moveit-courses-2-8.md)。模型在隔离容器内加载通过；从零配置生成、RViz 画面和模型与实物一致性未验收。课程脚本位于 `/home/jetson/farm-tools/arm-noetic.sh`，2026-10-17 只移动本地文件，未重新部署或核对其远端哈希；2026-10-18 的真机验证由独立的 `arm-check.py` 完成。
 
 脚本 `stop` 分支直接停止同名容器，位于用途标签检查之前；其他模式会检查现有容器标签。本次不修改行为，若以后修改脚本，可核对停止分支是否也需要校验用途。显示认证挂载在容器创建时固定，桌面重登录后的有效性需复核。
 

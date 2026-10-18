@@ -14,7 +14,9 @@
 | 按模块理解 | [机械臂](modules/arm.md)、[感知](modules/sensors.md)、[底盘](modules/chassis.md)、[主机](modules/host.md) |
 | 了解尚未实施的方案 | [农场作业方案](plans/farm-workflow.md) |
 | 查原始资料 | [参考资料索引](references/README.md)、[15 份机械臂课程](references/arm-courses.md)、[9 份基础控制课程与附件](references/basic-control-courses.md)、[照片](references/photos.md) |
+| 复现机械臂课程仿真 | [操作步骤](guides/arm.md#课程仿真复现)、[第 1 课](reports/2026-10-11-moveit-configuration.md)、[第 2～8 课](reports/2026-10-11-moveit-courses-2-8.md) |
 | 回溯过程 | [变更记录](changes/README.md)、[2026-10-11 测试](reports/2026-10-11-static-tests.md)、[阶段快照](reports/2026-10-11-milestone.md) |
+| 分支知识迁移 | [main 新结构与 dev 迁移范围](reports/2026-10-18-branch-migration.md) |
 | 了解本次整理 | [审查报告](reports/2026-10-17-repository-audit.md)、[逐文件迁移清单](reports/2026-10-17-file-inventory.json) |
 | 维护文档 | [维护规范](maintenance.md)、[可选模板](templates.md)、[skill 源码](../skills/robot-doc-governance/SKILL.md)、[分发包](../dist/robot-doc-governance.zip)、[工具说明](../tools/docs/README.md) |
 

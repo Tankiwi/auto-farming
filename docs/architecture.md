@@ -35,13 +35,14 @@ flowchart TB
 | 本地 [modules/arm/arm-noetic.sh](../modules/arm/arm-noetic.sh) | 教程容器创建、启动、命令转发、停止 | 2026-10-17 阅读；未执行；当前与设备副本一致性未复核 |
 | 本地 [modules/arm/arm.py](../modules/arm/arm.py)；用户在 Jetson `/home/jetson/farm-tools/arm.py` 运行 | 独立三参数 `test_motor(id, amplitude_deg, duration_ms)`：按库映射相对移动、反馈通过后返回，管理串口、不自动开启扭矩 | 2026-10-18 十项离线测试；用户提供 1～5 号八次局部往返 passed；设备哈希未读回，前次无动作根因未定位，6 号新日志待补 |
 | 本地 [modules/arm/arm-check.py](../modules/arm/arm-check.py)；设备 `/home/jetson/farm-tools/arm-check.py` | 直接串口查询与显式选择的 6 号小幅往返；暂停/恢复已识别原厂程序，不开启全部扭矩 | 2026-10-18 首次部署核对 SHA-256；后续本地减 300、设备减 122，已出现差异，未覆盖/部署；现场动作通过、返回精度未通过，不是整臂驱动 |
+| 本地 [modules/arm/verify-moveit-sim.py](../modules/arm/verify-moveit-sim.py) | 第 1 课六项目标规划与 fake 执行验证，依赖 rospy / moveit_commander | dev 原脚本字节不变；2026-10-11 6/6 历史通过，设备文件当前一致性未复核，仅用于隔离教程容器 |
 | Jetson `/home/jetson/farm-tools/arm-noetic.sh` | 上述脚本部署入口 | 2026-10-11 部署与 `core` 实测；未记录部署哈希 |
 | Jetson `/home/jetson/.bashrc` | 环境加载与车型、雷达、相机变量 | 变更及备份见软件环境文档 |
 | Jetson `/home/jetson/yahboomcar_ros2_ws/software/library_ws` | 原厂库工作空间；传感器依赖入口 | 安装环境路径已记录；各包源码子路径与提交待定位 |
 | Jetson `/home/jetson/yahboomcar_ros2_ws/yahboomcar_ws` | 原厂机器人应用工作空间 | `laser_bringup_launch.py` 的 x3plus 分支缺失；绝对文件路径待定位 |
 | Jetson `/home/jetson/Rosmaster` | 原厂库示例资料 | 历史记录 Rosmaster_Lib 3.3.1；自定义固件兼容性未知 |
-| 容器 `/root/yahboomcar_ws/src/x3plus_moveit_config` | 预装 MoveIt 配置 | 2026-10-11 确认存在，未验收真机配置 |
-| 容器 `/root/yahboomcar_ws/src/yahboomcar_description/urdf/yahboomcar_X3plus.urdf` | X3 Plus 模型 | 路径存在已记录，模型加载与实物一致性未验证 |
+| 容器 `/root/yahboomcar_ws/src/x3plus_moveit_config` | 预装 MoveIt 配置 | 2026-10-11 历史配置核对与 6/6 fake 规划执行通过；未验收真机配置 |
+| 容器 `/root/yahboomcar_ws/src/yahboomcar_description/urdf/yahboomcar_X3plus.urdf` | X3 Plus 模型 | 2026-10-11 历史模型加载通过；与实物一致性未验证 |
 | 容器 `/root/software/library_ws/devel/setup.bash` | ROS 1 库环境加载入口 | 本地脚本引用；依赖版本需后续归档 |
 | 自定义底板固件 | 控制协议、反馈、停止与执行器控制 | 源码位置、版本、构建与烧录方法均待归档 |
 
@@ -62,7 +63,7 @@ flowchart TB
 | `/dev/myserial` | Jetson ↔ 刷回后的底板 | 2026-10-18 在 115200 下版本应答 3.5，六舵机位置及 6 号小幅控制验证；此前无应答为历史 | 板卡/固件文件、底盘反馈、完整限位、超时与急停；不将原厂库角度区间当实物限位 |
 | `map → odom → base_link → 传感器` | 待确定 | 目标整车 TF 关系，尚未验证 | 各变换发布者、轴方向、单位、外参与更新频率 |
 
-原厂查询所用波特率不等于自定义固件已确认波特率；不能根据话题命名假定完整接口。上表仅为已有记录摘要，尚不是可直接实现底盘驱动的完整契约。速度控制入口、里程计和机械臂控制话题均未确认。
+原厂查询所用波特率不等于自定义固件已确认波特率；不能根据话题命名假定完整接口。上表仅为已有记录摘要，尚不是可直接实现底盘驱动的完整契约。速度控制入口和里程计未确认；dev 历史核对了 Noetic 的 `TargetAngle` / `yahboomcar_msgs/ArmJoint` 链路，但当前部署、完整字段及 MoveIt 真机通信未验收，不能当作已可用的控制接口。
 
 ## 4. 修改定位与验证入口
 

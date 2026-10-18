@@ -8,3 +8,4 @@
 *.docx binary
 *.torrent binary
 *.zip binary
+modules/chassis/vendor/basic-control/program-logs-redacted.txt -text whitespace=cr-at-eol

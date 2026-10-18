@@ -20,6 +20,10 @@
 | 14 | [14、色块识别搬运](../../modules/arm/vendor/14-color-transport.pdf) | 4 |
 | 15 | [15、自动驾驶清障](../../modules/arm/vendor/15-autopilot-obstacle-clearing.pdf) | 6 |
 
+## 项目课程验收
+
+2026-10-18 从 dev 迁入 2026-10-11 的[第 1 课配置核对与 fake 规划](../reports/2026-10-11-moveit-configuration.md)、[第 2～8 课仿真记录](../reports/2026-10-11-moveit-courses-2-8.md)和[复现步骤](../guides/arm.md#课程仿真复现)。仅历史软件仿真，第 2 课真机部分、第 9～15 课均未验收；从零生成、RViz 画面与设备当前补丁状态待核对。
+
 ## 使用边界和原文疑点
 
 - 第 1–8 课包含 ROS 1 / MoveIt 示例；第 9–15 课包含 ROS 1 `roslaunch` / `rosrun`、底盘或舵机相关示例，不能直接在宿主机 Humble 执行。项目已验证的教程入口见[操作指南](../guides/arm.md)。

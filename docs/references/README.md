@@ -24,6 +24,7 @@
 ## 本地原件
 
 - [厂商基础控制资料](basic-control-courses.md)：9 份 PDF、刷写程序、驱动 ZIP 和脱敏历史日志；原名与哈希见[导入清单](../reports/2026-10-18-basic-control-inventory.json)。
+- [dev 旧指南分流与限制](dev-legacy-guide.md)：保留 Git 历史入口，不将通用建议或未核实参数写成本机事实。
 - [厂商机械臂课程](arm-courses.md)：15 份 PDF，原文与本机事实区分。
 - [历史照片](photos.md)：14 张原图及来源路径索引。
 - [农场流程 Word 原件](plans/farm-workflow.docx)与[方案说明](../plans/farm-workflow.md)：设计设想，不是设备验收。
