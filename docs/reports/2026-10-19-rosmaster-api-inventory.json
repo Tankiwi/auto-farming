@@ -1,0 +1,381 @@
+{
+  "date": "2026-10-19",
+  "scope": "Installed Jetson Rosmaster_Lib 3.3.1; read-only source audit, no instance or serial access",
+  "source_path": "/usr/local/lib/python3.10/dist-packages/Rosmaster_Lib-3.3.1-py3.10.egg/Rosmaster_Lib/Rosmaster_Lib.py",
+  "snapshot": "2026-10-19-rosmaster-lib-source.txt",
+  "snapshot_kind": "Python loader get_source text encoded as UTF-8",
+  "source_sha256": "bc0f1313f4f2527cca5f631373ab66cf03c66035d1732a3f2fd665f32a27c139",
+  "source_bytes": 58871,
+  "method_count": 46,
+  "public_method_count": 38,
+  "methods": [
+    {
+      "name": "__init__",
+      "signature": "__init__(self, car_type=1, com='/dev/myserial', delay=0.002, debug=False)",
+      "line": 14,
+      "end_line": 131,
+      "public": false,
+      "category": "lifecycle"
+    },
+    {
+      "name": "__del__",
+      "signature": "__del__(self)",
+      "line": 133,
+      "end_line": 136,
+      "public": false,
+      "category": "lifecycle"
+    },
+    {
+      "name": "__parse_data",
+      "signature": "__parse_data(self, ext_type, ext_data)",
+      "line": 140,
+      "end_line": 252,
+      "public": false,
+      "category": "private implementation"
+    },
+    {
+      "name": "__receive_data",
+      "signature": "__receive_data(self)",
+      "line": 256,
+      "end_line": 280,
+      "public": false,
+      "category": "private implementation"
+    },
+    {
+      "name": "__request_data",
+      "signature": "__request_data(self, function, param=0)",
+      "line": 284,
+      "end_line": 291,
+      "public": false,
+      "category": "private implementation"
+    },
+    {
+      "name": "__arm_convert_value",
+      "signature": "__arm_convert_value(self, s_id, s_angle)",
+      "line": 295,
+      "end_line": 309,
+      "public": false,
+      "category": "private implementation"
+    },
+    {
+      "name": "__arm_convert_angle",
+      "signature": "__arm_convert_angle(self, s_id, s_value)",
+      "line": 313,
+      "end_line": 327,
+      "public": false,
+      "category": "private implementation"
+    },
+    {
+      "name": "__limit_motor_value",
+      "signature": "__limit_motor_value(self, value)",
+      "line": 331,
+      "end_line": 339,
+      "public": false,
+      "category": "private implementation"
+    },
+    {
+      "name": "create_receive_threading",
+      "signature": "create_receive_threading(self)",
+      "line": 343,
+      "end_line": 354,
+      "public": true,
+      "category": "5. 通信、车型和速度环配置：8 个方法"
+    },
+    {
+      "name": "set_auto_report_state",
+      "signature": "set_auto_report_state(self, enable, forever=False)",
+      "line": 363,
+      "end_line": 380,
+      "public": true,
+      "category": "5. 通信、车型和速度环配置：8 个方法"
+    },
+    {
+      "name": "set_beep",
+      "signature": "set_beep(self, on_time)",
+      "line": 386,
+      "end_line": 402,
+      "public": true,
+      "category": "8. 非运动辅助：3 个方法"
+    },
+    {
+      "name": "set_pwm_servo",
+      "signature": "set_pwm_servo(self, servo_id, angle)",
+      "line": 407,
+      "end_line": 427,
+      "public": true,
+      "category": "3. 机械臂、夹爪及 PWM 舵机：7 个方法"
+    },
+    {
+      "name": "set_pwm_servo_all",
+      "signature": "set_pwm_servo_all(self, angle_s1, angle_s2, angle_s3, angle_s4)",
+      "line": 431,
+      "end_line": 452,
+      "public": true,
+      "category": "3. 机械臂、夹爪及 PWM 舵机：7 个方法"
+    },
+    {
+      "name": "set_colorful_lamps",
+      "signature": "set_colorful_lamps(self, led_id, red, green, blue)",
+      "line": 460,
+      "end_line": 476,
+      "public": true,
+      "category": "8. 非运动辅助：3 个方法"
+    },
+    {
+      "name": "set_colorful_effect",
+      "signature": "set_colorful_effect(self, effect, speed=255, parm=255)",
+      "line": 486,
+      "end_line": 501,
+      "public": true,
+      "category": "8. 非运动辅助：3 个方法"
+    },
+    {
+      "name": "set_motor",
+      "signature": "set_motor(self, speed_1, speed_2, speed_3, speed_4)",
+      "line": 506,
+      "end_line": 523,
+      "public": true,
+      "category": "1. 底盘直接运动：3 个方法"
+    },
+    {
+      "name": "set_car_run",
+      "signature": "set_car_run(self, state, speed, adjust=False)",
+      "line": 534,
+      "end_line": 551,
+      "public": true,
+      "category": "1. 底盘直接运动：3 个方法"
+    },
+    {
+      "name": "set_car_motion",
+      "signature": "set_car_motion(self, v_x, v_y, v_z)",
+      "line": 555,
+      "end_line": 577,
+      "public": true,
+      "category": "1. 底盘直接运动：3 个方法"
+    },
+    {
+      "name": "set_pid_param",
+      "signature": "set_pid_param(self, kp, ki, kd, forever=False)",
+      "line": 590,
+      "end_line": 619,
+      "public": true,
+      "category": "5. 通信、车型和速度环配置：8 个方法"
+    },
+    {
+      "name": "set_car_type",
+      "signature": "set_car_type(self, car_type)",
+      "line": 656,
+      "end_line": 668,
+      "public": true,
+      "category": "5. 通信、车型和速度环配置：8 个方法"
+    },
+    {
+      "name": "set_uart_servo",
+      "signature": "set_uart_servo(self, servo_id, pulse_value, run_time=500)",
+      "line": 676,
+      "end_line": 702,
+      "public": true,
+      "category": "3. 机械臂、夹爪及 PWM 舵机：7 个方法"
+    },
+    {
+      "name": "set_uart_servo_angle",
+      "signature": "set_uart_servo_angle(self, s_id, s_angle, run_time=500)",
+      "line": 708,
+      "end_line": 748,
+      "public": true,
+      "category": "3. 机械臂、夹爪及 PWM 舵机：7 个方法"
+    },
+    {
+      "name": "set_uart_servo_id",
+      "signature": "set_uart_servo_id(self, servo_id)",
+      "line": 754,
+      "end_line": 768,
+      "public": true,
+      "category": "6. ID、校准及恢复：3 个方法"
+    },
+    {
+      "name": "set_uart_servo_torque",
+      "signature": "set_uart_servo_torque(self, enable)",
+      "line": 776,
+      "end_line": 791,
+      "public": true,
+      "category": "3. 机械臂、夹爪及 PWM 舵机：7 个方法"
+    },
+    {
+      "name": "set_uart_servo_ctrl_enable",
+      "signature": "set_uart_servo_ctrl_enable(self, enable)",
+      "line": 795,
+      "end_line": 799,
+      "public": true,
+      "category": "3. 机械臂、夹爪及 PWM 舵机：7 个方法"
+    },
+    {
+      "name": "set_uart_servo_angle_array",
+      "signature": "set_uart_servo_angle_array(self, angle_s=[90, 90, 90, 90, 90, 180], run_time=500)",
+      "line": 805,
+      "end_line": 843,
+      "public": true,
+      "category": "3. 机械臂、夹爪及 PWM 舵机：7 个方法"
+    },
+    {
+      "name": "set_uart_servo_offset",
+      "signature": "set_uart_servo_offset(self, servo_id)",
+      "line": 848,
+      "end_line": 873,
+      "public": true,
+      "category": "6. ID、校准及恢复：3 个方法"
+    },
+    {
+      "name": "set_akm_default_angle",
+      "signature": "set_akm_default_angle(self, angle, forever=False)",
+      "line": 883,
+      "end_line": 904,
+      "public": true,
+      "category": "7. 阿克曼车型专用：3 个方法"
+    },
+    {
+      "name": "set_akm_steering_angle",
+      "signature": "set_akm_steering_angle(self, angle, ctrl_car=False)",
+      "line": 910,
+      "end_line": 927,
+      "public": true,
+      "category": "7. 阿克曼车型专用：3 个方法"
+    },
+    {
+      "name": "reset_flash_value",
+      "signature": "reset_flash_value(self)",
+      "line": 932,
+      "end_line": 944,
+      "public": true,
+      "category": "6. ID、校准及恢复：3 个方法"
+    },
+    {
+      "name": "reset_car_state",
+      "signature": "reset_car_state(self)",
+      "line": 948,
+      "end_line": 959,
+      "public": true,
+      "category": "2. 停止及运行状态：1 个额外方法"
+    },
+    {
+      "name": "clear_auto_report_data",
+      "signature": "clear_auto_report_data(self)",
+      "line": 963,
+      "end_line": 969,
+      "public": true,
+      "category": "5. 通信、车型和速度环配置：8 个方法"
+    },
+    {
+      "name": "get_akm_default_angle",
+      "signature": "get_akm_default_angle(self)",
+      "line": 972,
+      "end_line": 983,
+      "public": true,
+      "category": "7. 阿克曼车型专用：3 个方法"
+    },
+    {
+      "name": "get_uart_servo_value",
+      "signature": "get_uart_servo_value(self, servo_id)",
+      "line": 989,
+      "end_line": 1006,
+      "public": true,
+      "category": "4. 运动与状态反馈：10 个方法"
+    },
+    {
+      "name": "get_uart_servo_angle",
+      "signature": "get_uart_servo_angle(self, s_id)",
+      "line": 1010,
+      "end_line": 1058,
+      "public": true,
+      "category": "4. 运动与状态反馈：10 个方法"
+    },
+    {
+      "name": "get_uart_servo_angle_array",
+      "signature": "get_uart_servo_angle_array(self)",
+      "line": 1062,
+      "end_line": 1091,
+      "public": true,
+      "category": "4. 运动与状态反馈：10 个方法"
+    },
+    {
+      "name": "get_accelerometer_data",
+      "signature": "get_accelerometer_data(self)",
+      "line": 1095,
+      "end_line": 1098,
+      "public": true,
+      "category": "4. 运动与状态反馈：10 个方法"
+    },
+    {
+      "name": "get_gyroscope_data",
+      "signature": "get_gyroscope_data(self)",
+      "line": 1102,
+      "end_line": 1105,
+      "public": true,
+      "category": "4. 运动与状态反馈：10 个方法"
+    },
+    {
+      "name": "get_magnetometer_data",
+      "signature": "get_magnetometer_data(self)",
+      "line": 1108,
+      "end_line": 1111,
+      "public": true,
+      "category": "4. 运动与状态反馈：10 个方法"
+    },
+    {
+      "name": "get_imu_attitude_data",
+      "signature": "get_imu_attitude_data(self, ToAngle=True)",
+      "line": 1115,
+      "end_line": 1124,
+      "public": true,
+      "category": "4. 运动与状态反馈：10 个方法"
+    },
+    {
+      "name": "get_motion_data",
+      "signature": "get_motion_data(self)",
+      "line": 1128,
+      "end_line": 1133,
+      "public": true,
+      "category": "4. 运动与状态反馈：10 个方法"
+    },
+    {
+      "name": "get_battery_voltage",
+      "signature": "get_battery_voltage(self)",
+      "line": 1137,
+      "end_line": 1140,
+      "public": true,
+      "category": "4. 运动与状态反馈：10 个方法"
+    },
+    {
+      "name": "get_motor_encoder",
+      "signature": "get_motor_encoder(self)",
+      "line": 1144,
+      "end_line": 1147,
+      "public": true,
+      "category": "4. 运动与状态反馈：10 个方法"
+    },
+    {
+      "name": "get_motion_pid",
+      "signature": "get_motion_pid(self)",
+      "line": 1151,
+      "end_line": 1166,
+      "public": true,
+      "category": "5. 通信、车型和速度环配置：8 个方法"
+    },
+    {
+      "name": "get_car_type_from_machine",
+      "signature": "get_car_type_from_machine(self)",
+      "line": 1189,
+      "end_line": 1197,
+      "public": true,
+      "category": "5. 通信、车型和速度环配置：8 个方法"
+    },
+    {
+      "name": "get_version",
+      "signature": "get_version(self)",
+      "line": 1202,
+      "end_line": 1215,
+      "public": true,
+      "category": "5. 通信、车型和速度环配置：8 个方法"
+    }
+  ]
+}

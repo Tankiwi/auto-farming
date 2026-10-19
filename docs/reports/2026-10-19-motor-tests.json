@@ -1,0 +1,307 @@
+{
+  "motor-test-2026-10-19.log": {
+    "port": "/dev/myserial",
+    "resolved": "/dev/ttyUSB2",
+    "pwm": 15,
+    "pulse_seconds": 0.5,
+    "tests": [
+      {
+        "channel": 1,
+        "pwm": 15,
+        "start": [
+          -10,
+          -4,
+          -321,
+          -4
+        ],
+        "end": [
+          -10,
+          -4,
+          -321,
+          -4
+        ],
+        "delta": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "stop_span": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "encoder_samples": 32,
+        "passed": false
+      }
+    ],
+    "firmware": [
+      3,
+      5
+    ],
+    "baseline_span": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "baseline_encoder": [
+      -10,
+      -4,
+      -321,
+      -4
+    ],
+    "valid_frames": {
+      "10": 57,
+      "81": 1,
+      "14": 57,
+      "12": 57,
+      "13": 56
+    },
+    "bad_checksums": 0,
+    "status": "failed",
+    "error": "Movement/isolated channel/stop check failed; no auto-increase"
+  },
+  "motor-test-2026-10-19-pwm25.log": {
+    "port": "/dev/myserial",
+    "resolved": "/dev/ttyUSB2",
+    "pwm": 25,
+    "pulse_seconds": 0.5,
+    "tests": [
+      {
+        "channel": 1,
+        "pwm": 25,
+        "start": [
+          -10,
+          -4,
+          -321,
+          -4
+        ],
+        "end": [
+          -23,
+          -4,
+          -321,
+          -4
+        ],
+        "delta": [
+          -13,
+          0,
+          0,
+          0
+        ],
+        "stop_span": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "encoder_samples": 32,
+        "passed": true
+      },
+      {
+        "channel": 1,
+        "pwm": -25,
+        "start": [
+          -23,
+          -4,
+          -321,
+          -4
+        ],
+        "end": [
+          6,
+          -4,
+          -321,
+          1
+        ],
+        "delta": [
+          29,
+          0,
+          0,
+          5
+        ],
+        "stop_span": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "encoder_samples": 32,
+        "passed": false
+      }
+    ],
+    "firmware": [
+      3,
+      5
+    ],
+    "baseline_span": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "baseline_encoder": [
+      -10,
+      -4,
+      -321,
+      -4
+    ],
+    "valid_frames": {
+      "12": 97,
+      "81": 1,
+      "13": 96,
+      "10": 96,
+      "14": 96
+    },
+    "bad_checksums": 0,
+    "status": "failed",
+    "error": "Movement/isolated channel/stop check failed; no auto-increase"
+  },
+  "postcheck": {
+    "encoder_first": [
+      6,
+      10,
+      -321,
+      0
+    ],
+    "encoder_last": [
+      6,
+      10,
+      -321,
+      0
+    ],
+    "encoder_span": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "encoder_samples": 25,
+    "battery_volts": [
+      10.8,
+      10.8,
+      10.8,
+      10.8,
+      10.8,
+      10.8,
+      10.8,
+      10.8,
+      10.8,
+      10.8,
+      10.8,
+      10.8,
+      10.8,
+      10.8,
+      10.8,
+      10.8,
+      10.8,
+      10.8,
+      10.8,
+      10.8,
+      10.8,
+      10.8,
+      10.8,
+      10.8
+    ],
+    "valid_frames": {
+      "13": 25,
+      "10": 24,
+      "14": 24,
+      "12": 24
+    },
+    "bad_checksums": 0
+  },
+  "deployment_sha256": "4fcb888b2d3177d3774ea763c5ac02c06c8290208314685bcba57d223df635a8",
+  "serial_owners_after": "",
+  "motor-test-2026-10-19-pwm35.log": {
+    "port": "/dev/myserial",
+    "resolved": "/dev/ttyUSB2",
+    "pwm": 35,
+    "pulse_seconds": 1.0,
+    "tests": [
+      {
+        "channel": 1,
+        "pwm": 35,
+        "start": [
+          6,
+          11,
+          -283,
+          15
+        ],
+        "end": [
+          -446,
+          -195,
+          -282,
+          13
+        ],
+        "delta": [
+          -452,
+          -206,
+          1,
+          -2
+        ],
+        "stop_span": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "encoder_samples": 45,
+        "passed": false
+      }
+    ],
+    "firmware": [
+      3,
+      5
+    ],
+    "baseline_span": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "baseline_encoder": [
+      6,
+      11,
+      -283,
+      15
+    ],
+    "valid_frames": {
+      "10": 69,
+      "81": 1,
+      "14": 69,
+      "12": 69,
+      "13": 69
+    },
+    "bad_checksums": 0,
+    "status": "failed",
+    "error": "Movement/isolated channel/stop check failed; no auto-increase"
+  },
+  "final_postcheck": {
+    "encoder_first": [
+      -446,
+      -195,
+      -282,
+      13
+    ],
+    "encoder_last": [
+      -446,
+      -195,
+      -282,
+      13
+    ],
+    "span": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "samples": 24,
+    "bad_checksums": 0
+  },
+  "software_check": {
+    "mock_pulse_and_three_zeros": "passed",
+    "elapsed_seconds": 0.654,
+    "child_status": 0
+  }
+}

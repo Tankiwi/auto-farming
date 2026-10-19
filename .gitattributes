@@ -9,3 +9,4 @@
 *.torrent binary
 *.zip binary
 modules/chassis/vendor/basic-control/program-logs-redacted.txt -text whitespace=cr-at-eol
+docs/reports/2026-10-19-rosmaster-lib-source.txt -text

@@ -4,6 +4,7 @@
 
 - [operations.md](operations.md)：课程启动、检查、保存与停止。
 - [protocol.md](protocol.md)：底板功能码、数字含义与查询／控制区别。
+- [官方 Python API 清单](../../docs/references/rosmaster-motion-api.md)：安装源码的全部公开方法与舵机使能/扭矩/校准限制。
 - [environment.md](environment.md)：宿主机与容器环境。
 - [vendor/README.md](vendor/README.md)：课程原件与原文疑点。
 

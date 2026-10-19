@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "AGENTS.md",
+                "file": "modules/chassis/AGENTS.md",
                 "mode": "source",
                 "source": false
               },
@@ -190,6 +190,7 @@
   },
   "active": "c288b74d625fbf95",
   "lastOpenFiles": [
+    "docs/reports/2026-10-19-rosmaster-lib-source.txt",
     "modules/arm/vendor/05-cartesian-path.pdf",
     "modules/arm/vendor/04-moveit-kinematics.pdf",
     "modules/arm/vendor/03-random-motion.pdf",
@@ -200,7 +201,6 @@
     "modules/arm/vendor/11-mediapipe-chassis-gestures.pdf",
     "modules/arm/vendor/10-mediapipe-arm-gestures.pdf",
     "modules/arm/vendor/09-mediapipe-hand-control.pdf",
-    "modules/arm/vendor/15-autopilot-obstacle-clearing.pdf",
     "docs/status.md",
     "docs/README.md",
     "docs/pending.md",

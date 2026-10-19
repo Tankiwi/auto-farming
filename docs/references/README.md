@@ -1,6 +1,6 @@
 # 参考资料与证据附件
 
-更新：2026-10-18｜设备证据按各专题日期查阅；本次卖家资料整理未连接设备。
+更新：2026-10-19｜设备证据按各专题日期查阅；本次只读提取安装库源码，未操作控制串口。
 
 ## 文件与参考资料
 
@@ -22,6 +22,8 @@
 - [官方 X3 Plus GitHub 资料](https://github.com/YahboomTechnology/ROSMASTERX3-PLUS)。选择课程时需区分主控、ROS 版本和板卡版本。
 
 ## 本地原件
+
+- [官方 Python 运动 API](rosmaster-motion-api.md)：按实际安装的 Rosmaster_Lib 3.3.1 核对全部 38 个公开方法，含[源码快照](../reports/2026-10-19-rosmaster-lib-source.txt)、[方法清单与哈希](../reports/2026-10-19-rosmaster-api-inventory.json)，区分接口存在与真机验收。
 
 - [厂商基础控制资料](basic-control-courses.md)：9 份 PDF、刷写程序、驱动 ZIP 和脱敏历史日志；原名与哈希见[导入清单](../reports/2026-10-18-basic-control-inventory.json)。
 - [dev 旧指南分流与限制](dev-legacy-guide.md)：保留 Git 历史入口，不将通用建议或未核实参数写成本机事实。

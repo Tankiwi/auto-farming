@@ -1,6 +1,6 @@
 # 文档导航
 
-更新：2026-10-18。设备事实见带日期的证据；本次厂商资料归档未连接设备。
+更新：2026-10-19。设备事实见带日期的证据；最新底盘局部测试见[报告](reports/2026-10-19-motor-test.md)。
 
 ## 按任务阅读
 
@@ -10,6 +10,8 @@
 | 查询设备与连接 | [硬件和接线](environment/hardware.md)、[软件环境](environment/software.md) |
 | 连接、启动、检查、停止 | [使用指南总览](guides/README.md)、[远程连接](guides/remote-access.md)、[传感器](guides/sensors.md)、[录制回放](guides/data-recording.md)、[机械臂教程](guides/arm.md) |
 | 遇到故障 | [故障排查](troubleshooting/README.md) |
+| 测试底盘电机 | [底盘分步指南](guides/chassis.md)、[2026-10-19 实测](reports/2026-10-19-motor-test.md) |
+| 使用官方 Python 运动接口 | [全部 38 个公开方法与限制](references/rosmaster-motion-api.md)、[安装源码清单](reports/2026-10-19-rosmaster-api-inventory.json) |
 | 定位代码和接口 | [架构与代码地图](architecture.md)、[底板功能码参考](references/rosmaster-protocol.md) |
 | 按模块理解 | [机械臂](modules/arm.md)、[感知](modules/sensors.md)、[底盘](modules/chassis.md)、[主机](modules/host.md) |
 | 了解尚未实施的方案 | [农场作业方案](plans/farm-workflow.md) |
