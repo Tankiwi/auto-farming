@@ -1,7 +1,7 @@
 # 架构与代码地图
 
-更新：2026-10-18｜适用：本项目本地资料、Jetson 宿主机与 Noetic 教程容器。
-依据：历史设备记录、本地脚本阅读及[2026-10-18 单舵机实测](reports/2026-10-18-arm-servo-test.md)；仅 arm-check.py 的本次部署核对了哈希。
+更新：2026-10-19｜适用：本项目本地资料、Jetson 宿主机与 Noetic 教程容器。
+依据：[单舵机记录](reports/2026-10-18-arm-servo-test.md)、[底盘局部实测](reports/2026-10-19-motor-test.md)、[用户整车前检日志](reports/2026-10-19-motion-demo-preflight.md)和[安装库源码清单](reports/2026-10-19-rosmaster-api-inventory.json)。arm-check.py 首次部署和 motor-check.py 有哈希核对；arm.py、motion-demo.py 的设备哈希待核对。
 
 ## 1. 系统边界
 
@@ -15,8 +15,9 @@ flowchart TB
   LD --> SC["/scan"]
   CD --> IM[图像 / 深度 / 点云]
   J -->|115200 / 版本与舵机位置应答| B[CH340 / 用户确认已刷回的底板]
-  B -->|仅6号小幅动作已确认| H[机械臂]
-  B -.运动与停车未验收.-> E[底盘电机]
+  B -->|六舵机可读 / 有限动作见用户日志| H[机械臂]
+  B -->|1路PWM动作 / 归零后反馈静止| E[底盘电机]
+  J -.车型前检不符 / 整车计划未执行.-> E
   J --> D[Docker：farm-arm-noetic]
   D --> N[Ubuntu 20.04.6 / ROS 1 Noetic]
   N --> M[roscore / MoveIt 配置助手]
@@ -35,12 +36,15 @@ flowchart TB
 | 本地 [modules/arm/arm-noetic.sh](../modules/arm/arm-noetic.sh) | 教程容器创建、启动、命令转发、停止 | 2026-10-17 阅读；未执行；当前与设备副本一致性未复核 |
 | 本地 [modules/arm/arm.py](../modules/arm/arm.py)；用户在 Jetson `/home/jetson/farm-tools/arm.py` 运行 | 独立三参数 `test_motor(id, amplitude_deg, duration_ms)`：按库映射相对移动、反馈通过后返回，管理串口、不自动开启扭矩 | 2026-10-18 十项离线测试；用户提供 1～5 号八次局部往返 passed；设备哈希未读回，前次无动作根因未定位，6 号新日志待补 |
 | 本地 [modules/arm/arm-check.py](../modules/arm/arm-check.py)；设备 `/home/jetson/farm-tools/arm-check.py` | 直接串口查询与显式选择的 6 号小幅往返；暂停/恢复已识别原厂程序，不开启全部扭矩 | 2026-10-18 首次部署核对 SHA-256；后续本地减 300、设备减 122，已出现差异，未覆盖/部署；现场动作通过、返回精度未通过，不是整臂驱动 |
+| 本地 [modules/chassis/motor-check.py](../modules/chassis/motor-check.py)；设备 `/home/jetson/farm-tools/motor-check.py` | 默认只读；显式分路 PWM，子进程计时归零，采集编码器 | 2026-10-19 本地/设备哈希一致；1 路有动作。脚本按悬空设计，实际用户更正为地面，不能凭其他计数变化判断故障；2～4 路未独立测 |
+| 本地 [modules/chassis/motion-demo.py](../modules/chassis/motion-demo.py)；用户在设备 `~/motion-demo.py` 运行 | 官方速度接口有限动作；接收会话可结束；独立 `--configure-x3plus` 持久化配置并读回，与运动互斥 | 用户已运行线程修复版，车型仍为 1、动作拒绝、该次退出正常；当前新增配置选项暂无上车结果；设备哈希未核对，四项离线回归通过 |
+| [安装库源码快照](reports/2026-10-19-rosmaster-lib-source.txt)及设备 Python 3.10 egg | Rosmaster_Lib 3.3.1 的控制帧、接收解析及反馈方法 | loader 源码哈希已核对，全部 38 个公开方法见[API 清单](references/rosmaster-motion-api.md)；构造开扭矩，接口存在不等于真机通过 |
 | 本地 [modules/arm/verify-moveit-sim.py](../modules/arm/verify-moveit-sim.py) | 第 1 课六项目标规划与 fake 执行验证，依赖 rospy / moveit_commander | dev 原脚本字节不变；2026-10-11 6/6 历史通过，设备文件当前一致性未复核，仅用于隔离教程容器 |
 | Jetson `/home/jetson/farm-tools/arm-noetic.sh` | 上述脚本部署入口 | 2026-10-11 部署与 `core` 实测；未记录部署哈希 |
 | Jetson `/home/jetson/.bashrc` | 环境加载与车型、雷达、相机变量 | 变更及备份见软件环境文档 |
 | Jetson `/home/jetson/yahboomcar_ros2_ws/software/library_ws` | 原厂库工作空间；传感器依赖入口 | 安装环境路径已记录；各包源码子路径与提交待定位 |
 | Jetson `/home/jetson/yahboomcar_ros2_ws/yahboomcar_ws` | 原厂机器人应用工作空间 | `laser_bringup_launch.py` 的 x3plus 分支缺失；绝对文件路径待定位 |
-| Jetson `/home/jetson/Rosmaster` | 原厂库示例资料 | 历史记录 Rosmaster_Lib 3.3.1；自定义固件兼容性未知 |
+| Jetson `/home/jetson/Rosmaster` | 原厂示例资料参考路径 | 库实际导入位置在 Python egg，不能把此目录当成当前安装源码；完整示例和提交待归档 |
 | 容器 `/root/yahboomcar_ws/src/x3plus_moveit_config` | 预装 MoveIt 配置 | 2026-10-11 历史配置核对与 6/6 fake 规划执行通过；未验收真机配置 |
 | 容器 `/root/yahboomcar_ws/src/yahboomcar_description/urdf/yahboomcar_X3plus.urdf` | X3 Plus 模型 | 2026-10-11 历史模型加载通过；与实物一致性未验证 |
 | 容器 `/root/software/library_ws/devel/setup.bash` | ROS 1 库环境加载入口 | 本地脚本引用；依赖版本需后续归档 |
@@ -60,10 +64,10 @@ flowchart TB
 | `/camera/ir/image_raw` | `astra_camera` → 图像订阅端 | Image；mono8 | QoS、坐标、同步 |
 | `/camera/depth/points` | `astra_camera` → 点云订阅端 | PointCloud2，收到连续消息 | fields、坐标、单位、几何精度 |
 | 各路 `camera_info` | 相机驱动 → 标定信息消费者 | CameraInfo；连续发布、内参非零 | 标定来源、畸变模型、与图像一致性 |
-| `/dev/myserial` | Jetson ↔ 刷回后的底板 | 2026-10-18 在 115200 下版本应答 3.5，六舵机位置及 6 号小幅控制验证；此前无应答为历史 | 板卡/固件文件、底盘反馈、完整限位、超时与急停；不将原厂库角度区间当实物限位 |
+| `/dev/myserial` | Jetson ↔ 刷回后的底板 | 115200；版本 3.5、舵机位置、编码器；底盘 1 路 PWM 有动作。用户整车前检读回底板车型 1，预期 Plus 为 2 | 实物轮位、速度精度、车型配置成功日志、完整限位、超时与急停；不将原厂角度区间当实物限位 |
 | `map → odom → base_link → 传感器` | 待确定 | 目标整车 TF 关系，尚未验证 | 各变换发布者、轴方向、单位、外参与更新频率 |
 
-原厂查询所用波特率不等于自定义固件已确认波特率；不能根据话题命名假定完整接口。上表仅为已有记录摘要，尚不是可直接实现底盘驱动的完整契约。速度控制入口和里程计未确认；dev 历史核对了 Noetic 的 `TargetAngle` / `yahboomcar_msgs/ArmJoint` 链路，但当前部署、完整字段及 MoveIt 真机通信未验收，不能当作已可用的控制接口。
+上表是带日期的记录，不是完整驱动验收。官方 Python 速度接口的实现已归档，但整车动作因底板车型前检终止，里程计/速度精度未验收。ROS 环境标识、Python 对象车型与底板持久化车型是三个不同配置，见[软件环境](environment/software.md#底板与-python-控制环境)。dev 历史核对了 Noetic 的 `TargetAngle` / `yahboomcar_msgs/ArmJoint` 链路，但当前部署、完整字段及 MoveIt 真机通信未验收。
 
 ## 4. 修改定位与验证入口
 

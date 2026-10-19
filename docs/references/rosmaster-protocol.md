@@ -35,7 +35,7 @@
 | 18 | `0x12` | `FUNC_MOTION` | 前后、横向与旋转速度控制 | 未实测 |
 | 19 | `0x13` | `FUNC_SET_MOTOR_PID` | 电机 PID 参数 | 未实测 |
 | 20 | `0x14` | `FUNC_SET_YAW_PID` | 航向 PID 参数 | 未实测 |
-| 21 | `0x15` | `FUNC_SET_CAR_TYPE` | 车型设置／读取相关 | 未实测 |
+| 21 | `0x15` | `FUNC_SET_CAR_TYPE` | 车型设置／读取相关 | 用户整车示例日志读回 1；设置 2 的设备结果待验证，见[报告](../reports/2026-10-19-motion-demo-preflight.md) |
 | 32 | `0x20` | `FUNC_UART_SERVO` | 单个总线舵机控制／位置读取 | 1–6 号位置读取通过；仅 6 号小幅动作获现场确认，返回精度未通过 |
 | 33 | `0x21` | `FUNC_UART_SERVO_ID` | 修改总线舵机编号 | 未实测 |
 | 34 | `0x22` | `FUNC_UART_SERVO_TORQUE` | 总线舵机扭矩开关 | 本次测试未发送；已读原厂构造函数会发送开启指令 |

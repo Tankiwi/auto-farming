@@ -1,6 +1,6 @@
 # 文档导航
 
-更新：2026-10-19。设备事实见带日期的证据；最新底盘局部测试见[报告](reports/2026-10-19-motor-test.md)。
+更新：2026-10-19。设备事实见带日期的证据；底盘局部测试见[报告](reports/2026-10-19-motor-test.md)，最新用户反馈见[车型前检与线程修复](reports/2026-10-19-motion-demo-preflight.md)。
 
 ## 按任务阅读
 
@@ -11,6 +11,7 @@
 | 连接、启动、检查、停止 | [使用指南总览](guides/README.md)、[远程连接](guides/remote-access.md)、[传感器](guides/sensors.md)、[录制回放](guides/data-recording.md)、[机械臂教程](guides/arm.md) |
 | 遇到故障 | [故障排查](troubleshooting/README.md) |
 | 测试底盘电机 | [底盘分步指南](guides/chassis.md)、[2026-10-19 实测](reports/2026-10-19-motor-test.md) |
+| 上传整车示例、处理车型前检 | [上传与版本核对](guides/chassis.md#上传与版本核对)、[显式车型配置](guides/chassis.md#显式设置-x3-plus-车型)、[用户日志](reports/2026-10-19-motion-demo-preflight.md) |
 | 使用官方 Python 运动接口 | [全部 38 个公开方法与限制](references/rosmaster-motion-api.md)、[安装源码清单](reports/2026-10-19-rosmaster-api-inventory.json) |
 | 定位代码和接口 | [架构与代码地图](architecture.md)、[底板功能码参考](references/rosmaster-protocol.md) |
 | 按模块理解 | [机械臂](modules/arm.md)、[感知](modules/sensors.md)、[底盘](modules/chassis.md)、[主机](modules/host.md) |
