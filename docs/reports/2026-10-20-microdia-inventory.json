@@ -1,0 +1,59 @@
+{
+  "date_utc": "2026-10-20",
+  "host": "192.168.43.53",
+  "scope": "Read-only device capability and package preflight; no capture/driver startup, no deployment",
+  "device_alias": "/dev/v4l/by-id/usb-Sonix_Technology_Co.__Ltd._USB_2.0_Camera-video-index0",
+  "resolved_device": "/dev/video0",
+  "preflight": "passed",
+  "ros_domain_id": 77,
+  "files": [
+    {
+      "path": "/opt/ros/humble/share/usb_cam/package.xml",
+      "sha256": "10928f7921d772336fced871ff21ae25d0ed8de043303c044658d93e9e6161c3",
+      "text": "<?xml version=\"1.0\"?>\n<?xml-model href=\"http://download.ros.org/schema/package_format3.xsd\" schematypens=\"http://www.w3.org/2001/XMLSchema\"?>\n<package format=\"3\">\n  <name>usb_cam</name>\n  <version>0.8.1</version>\n  <description>A ROS Driver for V4L USB Cameras</description>\n\n  <maintainer email=\"evanflynn.msu@gmail.com\">Evan Flynn</maintainer>\n\n  <license>BSD</license>\n\n  <url type=\"website\">http://wiki.ros.org/usb_cam</url>\n  <url type=\"bugtracker\">https://github.com/ros-drivers/usb_cam/issues</url>\n  <url type=\"repository\">https://github.com/ros-drivers/usb_cam</url>\n\n  <!-- Required so ROS build farms properly set ROS_VERSION -->\n  <build_depend>ros_environment</build_depend>\n\n  <buildtool_depend condition=\"$ROS_VERSION == 1\">catkin</buildtool_depend>\n\n  <buildtool_depend condition=\"$ROS_VERSION == 2\">ament_cmake_auto</buildtool_depend>\n  <buildtool_depend condition=\"$ROS_VERSION == 2\">rosidl_default_generators</buildtool_depend>\n\n  <build_depend condition=\"$ROS_VERSION == 1\">roscpp</build_depend>\n\n  <depend condition=\"$ROS_VERSION == 2\">rclcpp</depend>\n  <depend condition=\"$ROS_VERSION == 2\">rclcpp_components</depend>\n\n  <depend>cv_bridge</depend>\n  <depend>std_msgs</depend>\n  <depend>std_srvs</depend>\n  <depend>sensor_msgs</depend>\n  <depend>camera_info_manager</depend>\n  <depend>builtin_interfaces</depend>\n  <depend>image_transport</depend>\n  <depend>image_transport_plugins</depend>\n  <depend>v4l-utils</depend>\n\n  <!-- Only required for MJPEG to RGB converison -->\n  <depend>ffmpeg</depend>\n\n  <test_depend condition=\"$ROS_VERSION == 2\">ament_cmake_gtest</test_depend>\n  <test_depend condition=\"$ROS_VERSION == 2\">ament_lint_auto</test_depend>\n  <test_depend condition=\"$ROS_VERSION == 2\">ament_lint_common</test_depend>\n\n  <exec_depend condition=\"$ROS_VERSION == 2\">rosidl_default_runtime</exec_depend>\n\n  <member_of_group condition=\"$ROS_VERSION == 2\">rosidl_interface_packages</member_of_group>\n\n  <export>\n    <build_type condition=\"$ROS_VERSION == 1\">ament_cmake</build_type>\n    <build_type condition=\"$ROS_VERSION == 2\">ament_cmake</build_type>\n  </export>\n</package>\n"
+    },
+    {
+      "path": "/opt/ros/humble/share/usb_cam/config/params_1.yaml",
+      "sha256": "afc1eab3b42d7401d812d883bb2da0bf5706982ed710edd06cda19757f43f131",
+      "text": "/**:\n    ros__parameters:\n      video_device: \"/dev/video0\"\n      framerate: 30.0\n      io_method: \"mmap\"\n      frame_id: \"camera\"\n      pixel_format: \"mjpeg2rgb\"  # see usb_cam/supported_formats for list of supported formats\n      av_device_format: \"YUV422P\"\n      image_width: 640\n      image_height: 480\n      camera_name: \"test_camera\"\n      camera_info_url: \"package://usb_cam/config/camera_info.yaml\"\n      brightness: -1\n      contrast: -1\n      saturation: -1\n      sharpness: -1\n      gain: -1\n      auto_white_balance: true\n      white_balance: 4000\n      autoexposure: true\n      exposure: 100\n      autofocus: false\n      focus: -1"
+    }
+  ],
+  "queries": [
+    {
+      "command": [
+        "v4l2-ctl",
+        "-d",
+        "/dev/video0",
+        "--info"
+      ],
+      "stdout": "Driver Info:\n\tDriver name      : uvcvideo\n\tCard type        : USB 2.0 Camera: USB Camera\n\tBus info         : usb-3610000.usb-2.3.4\n\tDriver version   : 5.15.148\n\tCapabilities     : 0x84a00001\n\t\tVideo Capture\n\t\tMetadata Capture\n\t\tStreaming\n\t\tExtended Pix Format\n\t\tDevice Capabilities\n\tDevice Caps      : 0x04200001\n\t\tVideo Capture\n\t\tStreaming\n\t\tExtended Pix Format\nMedia Driver Info:\n\tDriver name      : uvcvideo\n\tModel            : USB 2.0 Camera: USB Camera\n\tSerial           : \n\tBus info         : usb-3610000.usb-2.3.4\n\tMedia version    : 5.15.148\n\tHardware revision: 0x00000000 (0)\n\tDriver version   : 5.15.148\nInterface Info:\n\tID               : 0x03000002\n\tType             : V4L Video\nEntity Info:\n\tID               : 0x00000001 (1)\n\tName             : USB 2.0 Camera: USB Camera\n\tFunction         : V4L2 I/O\n\tFlags            : default\n\tPad 0x01000007   : 0: Sink\n\t  Link 0x02000010: from remote pad 0x100000a of entity 'Extension 4' (Video Pixel Formatter): Data, Enabled, Immutable\n"
+    },
+    {
+      "command": [
+        "v4l2-ctl",
+        "-d",
+        "/dev/video0",
+        "--list-formats-ext"
+      ],
+      "stdout": "ioctl: VIDIOC_ENUM_FMT\n\tType: Video Capture\n\n\t[0]: 'YUYV' (YUYV 4:2:2)\n\t\tSize: Discrete 640x480\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.050s (20.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.100s (10.000 fps)\n\t\t\tInterval: Discrete 0.200s (5.000 fps)\n\t\tSize: Discrete 352x288\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.050s (20.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.100s (10.000 fps)\n\t\t\tInterval: Discrete 0.200s (5.000 fps)\n\t\tSize: Discrete 320x240\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.050s (20.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.100s (10.000 fps)\n\t\t\tInterval: Discrete 0.200s (5.000 fps)\n\t\tSize: Discrete 176x144\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.050s (20.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.100s (10.000 fps)\n\t\t\tInterval: Discrete 0.200s (5.000 fps)\n\t\tSize: Discrete 160x120\n\t\t\tInterval: Discrete 0.033s (30.000 fps)\n\t\t\tInterval: Discrete 0.040s (25.000 fps)\n\t\t\tInterval: Discrete 0.050s (20.000 fps)\n\t\t\tInterval: Discrete 0.067s (15.000 fps)\n\t\t\tInterval: Discrete 0.100s (10.000 fps)\n\t\t\tInterval: Discrete 0.200s (5.000 fps)\n"
+    },
+    {
+      "command": [
+        "udevadm",
+        "info",
+        "--query=property",
+        "--name=/dev/video0"
+      ],
+      "stdout": "DEVPATH=/devices/platform/bus@0/3610000.usb/usb1/1-2/1-2.3/1-2.3.4/1-2.3.4:1.0/video4linux/video0\nDEVNAME=/dev/video0\nMAJOR=81\nMINOR=0\nSUBSYSTEM=video4linux\nUSEC_INITIALIZED=12468196\nID_V4L_VERSION=2\nID_V4L_PRODUCT=USB 2.0 Camera: USB Camera\nID_V4L_CAPABILITIES=:capture:\nID_VENDOR=Sonix_Technology_Co.__Ltd.\nID_VENDOR_ENC=Sonix\\x20Technology\\x20Co.\\x2c\\x20Ltd.\nID_VENDOR_ID=0c45\nID_MODEL=USB_2.0_Camera\nID_MODEL_ENC=USB\\x202.0\\x20Camera\nID_MODEL_ID=6340\nID_REVISION=0000\nID_SERIAL=Sonix_Technology_Co.__Ltd._USB_2.0_Camera\nID_TYPE=video\nID_BUS=usb\nID_USB_INTERFACES=:0e0100:0e0200:010100:010200:\nID_USB_INTERFACE_NUM=00\nID_USB_DRIVER=uvcvideo\nID_PATH=platform-3610000.usb-usb-0:2.3.4:1.0\nID_PATH_TAG=platform-3610000_usb-usb-0_2_3_4_1_0\nID_FOR_SEAT=video4linux-platform-3610000_usb-usb-0_2_3_4_1_0\nCOLORD_DEVICE=1\nCOLORD_KIND=camera\nDEVLINKS=/dev/v4l/by-id/usb-Sonix_Technology_Co.__Ltd._USB_2.0_Camera-video-index0 /dev/camera_usb /dev/v4l/by-path/platform-3610000.usb-usb-0:2.3.4:1.0-video-index0\nTAGS=:uaccess:seat:snap_chromium_chromedriver:snap_chromium_chromium:snap_chromium_daemon:\nCURRENT_TAGS=:uaccess:snap_chromium_chromedriver:seat:snap_chromium_chromium:snap_chromium_daemon:\n"
+    },
+    {
+      "command": [
+        "ros2",
+        "pkg",
+        "executables",
+        "usb_cam"
+      ],
+      "stdout": "usb_cam show_image.py\nusb_cam usb_cam_node_exe\n"
+    }
+  ]
+}

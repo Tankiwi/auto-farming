@@ -1,0 +1,2275 @@
+{
+  "date_utc": "2026-10-20",
+  "host": "192.168.43.53",
+  "user": "jetson",
+  "hostname": "yahboom",
+  "scope": "Read-only inspection; no sensor drivers started, no hardware commands sent",
+  "files": [
+    {
+      "path": "/home/jetson/yahboomcar_ros2_ws/software/library_ws/src/ydlidar_ros2_driver/package.xml",
+      "sha256": "ed44a708d8de55f456c60ef7995e9fe70835c09698c757b46b200b32826ddc4d",
+      "excerpt": [
+        {
+          "line": 1,
+          "text": "<?xml version=\"1.0\"?>"
+        },
+        {
+          "line": 2,
+          "text": "<?xml-model href=\"http://download.ros.org/schema/package_format2.xsd\" schematypens=\"http://www.w3.org/2001/XMLSchema\"?>"
+        },
+        {
+          "line": 3,
+          "text": "<package format=\"2\">"
+        },
+        {
+          "line": 4,
+          "text": "  <name>ydlidar_ros2_driver</name>"
+        },
+        {
+          "line": 5,
+          "text": "  <version>1.0.1</version>"
+        },
+        {
+          "line": 6,
+          "text": "  <description>"
+        },
+        {
+          "line": 7,
+          "text": "    The ROS2 device driver for YDLIDAR LIDARS"
+        },
+        {
+          "line": 8,
+          "text": "  </description>"
+        },
+        {
+          "line": 9,
+          "text": "  <maintainer email=\"support@ydlidar.com\">Tony</maintainer>"
+        },
+        {
+          "line": 10,
+          "text": "  <license>MIT</license>"
+        },
+        {
+          "line": 11,
+          "text": ""
+        },
+        {
+          "line": 12,
+          "text": "  <buildtool_depend>ament_cmake</buildtool_depend>"
+        },
+        {
+          "line": 13,
+          "text": ""
+        },
+        {
+          "line": 14,
+          "text": "  <build_depend>rclcpp</build_depend>"
+        },
+        {
+          "line": 15,
+          "text": "  <build_depend>sensor_msgs</build_depend>"
+        },
+        {
+          "line": 16,
+          "text": "  <build_depend>visualization_msgs</build_depend>"
+        },
+        {
+          "line": 17,
+          "text": "  <build_depend>geometry_msgs</build_depend>"
+        },
+        {
+          "line": 18,
+          "text": "  <build_depend>std_srvs</build_depend>"
+        },
+        {
+          "line": 19,
+          "text": ""
+        },
+        {
+          "line": 20,
+          "text": "  <exec_depend>rclcpp</exec_depend>"
+        },
+        {
+          "line": 21,
+          "text": "  <exec_depend>sensor_msgs</exec_depend>"
+        },
+        {
+          "line": 22,
+          "text": "  <exec_depend>visualization_msgs</exec_depend>"
+        },
+        {
+          "line": 23,
+          "text": "  <exec_depend>geometry_msgs</exec_depend>"
+        },
+        {
+          "line": 24,
+          "text": "  <exec_depend>std_srvs</exec_depend>"
+        },
+        {
+          "line": 25,
+          "text": ""
+        },
+        {
+          "line": 26,
+          "text": "  <test_depend>ament_cmake_gtest</test_depend>"
+        },
+        {
+          "line": 27,
+          "text": "  <test_depend>ament_lint_auto</test_depend>"
+        },
+        {
+          "line": 28,
+          "text": "  <test_depend>ament_lint_common</test_depend>"
+        },
+        {
+          "line": 29,
+          "text": ""
+        },
+        {
+          "line": 30,
+          "text": "  <export>"
+        },
+        {
+          "line": 31,
+          "text": "    <build_type>ament_cmake</build_type>"
+        },
+        {
+          "line": 32,
+          "text": "  </export>"
+        },
+        {
+          "line": 33,
+          "text": "</package>"
+        }
+      ]
+    },
+    {
+      "path": "/home/jetson/yahboomcar_ros2_ws/software/library_ws/src/ydlidar_ros2_driver/src/ydlidar_ros2_driver_node.cpp",
+      "sha256": "28840fefc839659515c6a171fe133dc90ca163414c80a961a9445c2b6b77d497",
+      "excerpt": [
+        {
+          "line": 164,
+          "text": "  "
+        },
+        {
+          "line": 165,
+          "text": "  auto laser_pub = node->create_publisher<sensor_msgs::msg::LaserScan>(\"scan\", rclcpp::SensorDataQoS());"
+        },
+        {
+          "line": 166,
+          "text": "  auto pc_pub = node->create_publisher<sensor_msgs::msg::PointCloud>(\"point_cloud\", rclcpp::SensorDataQoS());"
+        },
+        {
+          "line": 167,
+          "text": "  "
+        },
+        {
+          "line": 168,
+          "text": "  auto stop_scan_service ="
+        },
+        {
+          "line": 169,
+          "text": "    [&laser](const std::shared_ptr<rmw_request_id_t> request_header,"
+        },
+        {
+          "line": 175,
+          "text": ""
+        },
+        {
+          "line": 176,
+          "text": "  auto stop_service = node->create_service<std_srvs::srv::Empty>(\"stop_scan\",stop_scan_service);"
+        },
+        {
+          "line": 177,
+          "text": ""
+        },
+        {
+          "line": 178,
+          "text": "  auto start_scan_service ="
+        },
+        {
+          "line": 179,
+          "text": "    [&laser](const std::shared_ptr<rmw_request_id_t> request_header,"
+        },
+        {
+          "line": 185,
+          "text": ""
+        },
+        {
+          "line": 186,
+          "text": "  auto start_service = node->create_service<std_srvs::srv::Empty>(\"start_scan\",start_scan_service);"
+        },
+        {
+          "line": 187,
+          "text": ""
+        },
+        {
+          "line": 188,
+          "text": "  rclcpp::WallRate loop_rate(20);"
+        },
+        {
+          "line": 189,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "path": "/home/jetson/yahboomcar_ros2_ws/software/library_ws/src/ydlidar_ros2_driver/src/ydlidar_ros2_driver_client.cpp",
+      "sha256": "56cb0f5c4106a8a5e04cc828977717aea49a6d70d1e96e2893adf21c709b6cfb",
+      "excerpt": [
+        {
+          "line": 33,
+          "text": "  auto lidar_info_sub = node->create_subscription<sensor_msgs::msg::LaserScan>("
+        },
+        {
+          "line": 34,
+          "text": "                        \"scan\", rclcpp::SensorDataQoS(), scanCb);"
+        },
+        {
+          "line": 35,
+          "text": ""
+        },
+        {
+          "line": 36,
+          "text": "  rclcpp::spin(node);"
+        },
+        {
+          "line": 37,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "path": "/home/jetson/yahboomcar_ros2_ws/software/library_ws/install/ydlidar_ros2_driver/share/ydlidar_ros2_driver/launch/ydlidar_raw_launch.py",
+      "sha256": "49a20d9c659571d954ac7335655c5b03b25d43341132f0bd958736e1d2538e57",
+      "excerpt": [
+        {
+          "line": 1,
+          "text": "#!/usr/bin/python3"
+        },
+        {
+          "line": 2,
+          "text": "# Copyright 2020, EAIBOT"
+        },
+        {
+          "line": 3,
+          "text": "# Licensed under the Apache License, Version 2.0 (the \"License\");"
+        },
+        {
+          "line": 4,
+          "text": "# you may not use this file except in compliance with the License."
+        },
+        {
+          "line": 5,
+          "text": "# You may obtain a copy of the License at"
+        },
+        {
+          "line": 6,
+          "text": "#"
+        },
+        {
+          "line": 7,
+          "text": "#     http://www.apache.org/licenses/LICENSE-2.0"
+        },
+        {
+          "line": 8,
+          "text": "#"
+        },
+        {
+          "line": 9,
+          "text": "# Unless required by applicable law or agreed to in writing, software"
+        },
+        {
+          "line": 10,
+          "text": "# distributed under the License is distributed on an \"AS IS\" BASIS,"
+        },
+        {
+          "line": 11,
+          "text": "# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied."
+        },
+        {
+          "line": 12,
+          "text": "# See the License for the specific language governing permissions and"
+        },
+        {
+          "line": 13,
+          "text": "# limitations under the License."
+        },
+        {
+          "line": 14,
+          "text": ""
+        },
+        {
+          "line": 15,
+          "text": "from ament_index_python.packages import get_package_share_directory"
+        },
+        {
+          "line": 16,
+          "text": ""
+        },
+        {
+          "line": 17,
+          "text": "from launch import LaunchDescription"
+        },
+        {
+          "line": 18,
+          "text": "from launch_ros.actions import LifecycleNode"
+        },
+        {
+          "line": 19,
+          "text": "from launch.actions import DeclareLaunchArgument"
+        },
+        {
+          "line": 20,
+          "text": "from launch.substitutions import LaunchConfiguration"
+        },
+        {
+          "line": 21,
+          "text": "import os"
+        },
+        {
+          "line": 22,
+          "text": ""
+        },
+        {
+          "line": 23,
+          "text": ""
+        },
+        {
+          "line": 24,
+          "text": "def generate_launch_description():"
+        },
+        {
+          "line": 25,
+          "text": "    share_dir = get_package_share_directory('ydlidar_ros2_driver')"
+        },
+        {
+          "line": 26,
+          "text": "    parameter_file = LaunchConfiguration('params_file')"
+        },
+        {
+          "line": 27,
+          "text": "    node_name = 'ydlidar_ros2_driver_node'"
+        },
+        {
+          "line": 28,
+          "text": ""
+        },
+        {
+          "line": 29,
+          "text": "    params_declare = DeclareLaunchArgument('params_file',"
+        },
+        {
+          "line": 30,
+          "text": "                                           default_value=os.path.join("
+        },
+        {
+          "line": 31,
+          "text": "                                               share_dir, 'params', 'ydlidar.yaml'),"
+        },
+        {
+          "line": 32,
+          "text": "                                           description='FPath to the ROS2 parameters file to use.')"
+        },
+        {
+          "line": 33,
+          "text": ""
+        },
+        {
+          "line": 34,
+          "text": "    driver_node = LifecycleNode(package='ydlidar_ros2_driver',"
+        },
+        {
+          "line": 35,
+          "text": "                                executable='ydlidar_ros2_driver_node',"
+        },
+        {
+          "line": 36,
+          "text": "                                name='ydlidar_ros2_driver_node',"
+        },
+        {
+          "line": 37,
+          "text": "                                output='screen',"
+        },
+        {
+          "line": 38,
+          "text": "                                emulate_tty=True,"
+        },
+        {
+          "line": 39,
+          "text": "                                parameters=[parameter_file],"
+        },
+        {
+          "line": 40,
+          "text": "                                namespace='/',"
+        },
+        {
+          "line": 41,
+          "text": "                                )"
+        },
+        {
+          "line": 42,
+          "text": ""
+        },
+        {
+          "line": 43,
+          "text": "    return LaunchDescription(["
+        },
+        {
+          "line": 44,
+          "text": "        params_declare,"
+        },
+        {
+          "line": 45,
+          "text": "        driver_node,"
+        },
+        {
+          "line": 46,
+          "text": "    ])"
+        }
+      ]
+    },
+    {
+      "path": "/home/jetson/yahboomcar_ros2_ws/software/library_ws/install/ydlidar_ros2_driver/share/ydlidar_ros2_driver/params/ydlidar.yaml",
+      "sha256": "2a3a3b254e0cdb06dd95d057e68757f9882abea24f43188b04fd7532d68fcb18",
+      "excerpt": [
+        {
+          "line": 1,
+          "text": "ydlidar_ros2_driver_node:"
+        },
+        {
+          "line": 2,
+          "text": "  ros__parameters:"
+        },
+        {
+          "line": 3,
+          "text": "    port: /dev/ydlidar"
+        },
+        {
+          "line": 4,
+          "text": "    frame_id: laser"
+        },
+        {
+          "line": 5,
+          "text": "    ignore_array: \"\""
+        },
+        {
+          "line": 6,
+          "text": "    baudrate: 512000"
+        },
+        {
+          "line": 7,
+          "text": "    lidar_type: 0"
+        },
+        {
+          "line": 8,
+          "text": "    device_type: 0"
+        },
+        {
+          "line": 9,
+          "text": "    sample_rate: 20"
+        },
+        {
+          "line": 10,
+          "text": "    abnormal_check_count: 4"
+        },
+        {
+          "line": 11,
+          "text": "    fixed_resolution: true"
+        },
+        {
+          "line": 12,
+          "text": "    reversion: true"
+        },
+        {
+          "line": 13,
+          "text": "    inverted: true"
+        },
+        {
+          "line": 14,
+          "text": "    auto_reconnect: true"
+        },
+        {
+          "line": 15,
+          "text": "    isSingleChannel: false"
+        },
+        {
+          "line": 16,
+          "text": "    intensity: false"
+        },
+        {
+          "line": 17,
+          "text": "    support_motor_dtr: false"
+        },
+        {
+          "line": 18,
+          "text": "    angle_max: 180.0"
+        },
+        {
+          "line": 19,
+          "text": "    angle_min: -180.0"
+        },
+        {
+          "line": 20,
+          "text": "    range_max: 50.0"
+        },
+        {
+          "line": 21,
+          "text": "    range_min: 0.01"
+        },
+        {
+          "line": 22,
+          "text": "    frequency: 10.0"
+        },
+        {
+          "line": 23,
+          "text": "    invalid_range_is_inf: false"
+        },
+        {
+          "line": 24,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "path": "/home/jetson/yahboomcar_ros2_ws/software/library_ws/src/ros2_astra_camera/astra_camera/package.xml",
+      "sha256": "a7be77006a84f2f476e8aec9b46859f308f51e67ba05033db9d469891e96378d",
+      "excerpt": [
+        {
+          "line": 1,
+          "text": "<?xml version=\"1.0\"?>"
+        },
+        {
+          "line": 2,
+          "text": "<?xml-model href=\"http://download.ros.org/schema/package_format3.xsd\" schematypens=\"http://www.w3.org/2001/XMLSchema\"?>"
+        },
+        {
+          "line": 3,
+          "text": "<package format=\"3\">"
+        },
+        {
+          "line": 4,
+          "text": "  <name>astra_camera</name>"
+        },
+        {
+          "line": 5,
+          "text": "  <version>1.1.0</version>"
+        },
+        {
+          "line": 6,
+          "text": "  <description>TODO: Package description</description>"
+        },
+        {
+          "line": 7,
+          "text": "  <maintainer email=\"jian.dong@pobox.com\">Joe Dong</maintainer>"
+        },
+        {
+          "line": 8,
+          "text": "  <license>TODO: License declaration</license>"
+        },
+        {
+          "line": 9,
+          "text": ""
+        },
+        {
+          "line": 10,
+          "text": "  <buildtool_depend>ament_cmake</buildtool_depend>"
+        },
+        {
+          "line": 11,
+          "text": ""
+        },
+        {
+          "line": 12,
+          "text": "  <depend>ament_index_cpp</depend>"
+        },
+        {
+          "line": 13,
+          "text": "  <depend>ament_lint_auto</depend>"
+        },
+        {
+          "line": 14,
+          "text": "  <depend>ament_lint_common</depend>"
+        },
+        {
+          "line": 15,
+          "text": "  <depend>astra_camera_msgs</depend>"
+        },
+        {
+          "line": 16,
+          "text": "  <depend>builtin_interfaces</depend>"
+        },
+        {
+          "line": 17,
+          "text": "  <depend>class_loader</depend>"
+        },
+        {
+          "line": 18,
+          "text": "  <depend>message_filters</depend>"
+        },
+        {
+          "line": 19,
+          "text": "  <depend>camera_info_manager</depend>"
+        },
+        {
+          "line": 20,
+          "text": "  <depend>cv_bridge</depend>"
+        },
+        {
+          "line": 21,
+          "text": "  <depend>image_geometry</depend>"
+        },
+        {
+          "line": 22,
+          "text": "  <depend>image_publisher</depend>"
+        },
+        {
+          "line": 23,
+          "text": "  <depend>image_transport</depend>"
+        },
+        {
+          "line": 24,
+          "text": "  <depend>rclcpp_components</depend>"
+        },
+        {
+          "line": 25,
+          "text": "  <depend>rclcpp</depend>"
+        },
+        {
+          "line": 26,
+          "text": "  <depend>sensor_msgs</depend>"
+        },
+        {
+          "line": 27,
+          "text": "  <depend>std_msgs</depend>"
+        },
+        {
+          "line": 28,
+          "text": "  <depend>std_srvs</depend>"
+        },
+        {
+          "line": 29,
+          "text": "  <depend>tf2_msgs</depend>"
+        },
+        {
+          "line": 30,
+          "text": "  <depend>tf2_ros</depend>"
+        },
+        {
+          "line": 31,
+          "text": "  <depend>tf2_sensor_msgs</depend>"
+        },
+        {
+          "line": 32,
+          "text": "  <depend>tf2</depend>"
+        },
+        {
+          "line": 33,
+          "text": "  <export>"
+        },
+        {
+          "line": 34,
+          "text": "    <build_type>ament_cmake</build_type>"
+        },
+        {
+          "line": 35,
+          "text": "  </export>"
+        },
+        {
+          "line": 36,
+          "text": "</package>"
+        }
+      ]
+    },
+    {
+      "path": "/home/jetson/yahboomcar_ros2_ws/software/library_ws/src/ros2_astra_camera/astra_camera/src/ob_camera_node.cpp",
+      "sha256": "903c5e1630d91b391bcf207497c4639e9782f6021b3f0ba3b652140699d25df6",
+      "excerpt": [
+        {
+          "line": 224,
+          "text": "  if (!use_uvc_camera_ && !color_info_url_.empty()) {"
+        },
+        {
+          "line": 225,
+          "text": "    color_info_manager_ = std::make_unique<camera_info_manager::CameraInfoManager>("
+        },
+        {
+          "line": 226,
+          "text": "        node_, \"rgb_camera\", color_info_url_);"
+        },
+        {
+          "line": 227,
+          "text": "  }"
+        },
+        {
+          "line": 228,
+          "text": "  if (!ir_info_url_.empty()) {"
+        },
+        {
+          "line": 229,
+          "text": "    ir_info_manager_ ="
+        },
+        {
+          "line": 230,
+          "text": "        std::make_unique<camera_info_manager::CameraInfoManager>(node_, \"ir_camera\", ir_info_url_);"
+        },
+        {
+          "line": 231,
+          "text": "  }"
+        },
+        {
+          "line": 232,
+          "text": "}"
+        },
+        {
+          "line": 233,
+          "text": ""
+        },
+        {
+          "line": 235,
+          "text": "  if (use_uvc_camera_) {"
+        },
+        {
+          "line": 236,
+          "text": "    auto color_camera_info = getColorCameraInfo();"
+        },
+        {
+          "line": 237,
+          "text": "    auto serial_number = getSerialNumber();"
+        },
+        {
+          "line": 238,
+          "text": "    uvc_camera_driver_ ="
+        },
+        {
+          "line": 239,
+          "text": "        std::make_shared<UVCCameraDriver>(node_, parameters_, color_camera_info, serial_number);"
+        },
+        {
+          "line": 240,
+          "text": "  } else {"
+        },
+        {
+          "line": 241,
+          "text": "    uvc_camera_driver_ = nullptr;"
+        },
+        {
+          "line": 242,
+          "text": "  }"
+        },
+        {
+          "line": 286,
+          "text": "  format_[DEPTH] = openni::PIXEL_FORMAT_DEPTH_1_MM;"
+        },
+        {
+          "line": 287,
+          "text": "  image_format_[DEPTH] = CV_16UC1;"
+        },
+        {
+          "line": 288,
+          "text": "  encoding_[DEPTH] = sensor_msgs::image_encodings::TYPE_16UC1;"
+        },
+        {
+          "line": 289,
+          "text": ""
+        },
+        {
+          "line": 290,
+          "text": "  stream_name_[COLOR] = \"color\";"
+        },
+        {
+          "line": 291,
+          "text": "  unit_step_size_[COLOR] = 3;"
+        },
+        {
+          "line": 331,
+          "text": "                                        \"default\");"
+        },
+        {
+          "line": 332,
+          "text": "    param_name = stream_name_[stream_index] + \"_camera_info_qos\";"
+        },
+        {
+          "line": 333,
+          "text": "    setAndGetNodeParameter<std::string>(parameters_, camera_info_qos_[stream_index], param_name,"
+        },
+        {
+          "line": 334,
+          "text": "                                        \"default\");"
+        },
+        {
+          "line": 335,
+          "text": "  }"
+        },
+        {
+          "line": 336,
+          "text": "  for (const auto& stream_index : IMAGE_STREAMS) {"
+        },
+        {
+          "line": 382,
+          "text": "      std::string name = stream_name_[stream_index];"
+        },
+        {
+          "line": 383,
+          "text": "      std::string topic = name + \"/image_raw\";"
+        },
+        {
+          "line": 384,
+          "text": "      auto image_qos = image_qos_[stream_index];"
+        },
+        {
+          "line": 385,
+          "text": "      auto image_qos_profile = getRMWQosProfileFromString(image_qos);"
+        },
+        {
+          "line": 386,
+          "text": "      image_publishers_[stream_index] = node_->create_publisher<sensor_msgs::msg::Image>("
+        },
+        {
+          "line": 387,
+          "text": "          topic,"
+        },
+        {
+          "line": 388,
+          "text": "          rclcpp::QoS(rclcpp::QoSInitialization::from_rmw(image_qos_profile), image_qos_profile));"
+        },
+        {
+          "line": 389,
+          "text": "      topic = name + \"/camera_info\";"
+        },
+        {
+          "line": 390,
+          "text": "      auto camera_info_qos = camera_info_qos_[stream_index];"
+        },
+        {
+          "line": 391,
+          "text": "      auto camera_info_qos_profile = getRMWQosProfileFromString(camera_info_qos);"
+        },
+        {
+          "line": 392,
+          "text": "      camera_info_publishers_[stream_index] = node_->create_publisher<CameraInfo>("
+        },
+        {
+          "line": 393,
+          "text": "          topic, rclcpp::QoS(rclcpp::QoSInitialization::from_rmw(camera_info_qos_profile),"
+        },
+        {
+          "line": 394,
+          "text": "                             camera_info_qos_profile));"
+        },
+        {
+          "line": 395,
+          "text": "    }"
+        },
+        {
+          "line": 396,
+          "text": "  }"
+        },
+        {
+          "line": 397,
+          "text": "  if (enable_publish_extrinsic_) {"
+        },
+        {
+          "line": 398,
+          "text": "    extrinsics_publisher_ = node_->create_publisher<Extrinsics>(\"extrinsic/depth_to_color\","
+        },
+        {
+          "line": 399,
+          "text": "                                                                rclcpp::QoS{1}.transient_local());"
+        },
+        {
+          "line": 400,
+          "text": "  }"
+        },
+        {
+          "line": 401,
+          "text": "}"
+        },
+        {
+          "line": 514,
+          "text": "  image.data = (uint8_t*)frame.getData();"
+        },
+        {
+          "line": 515,
+          "text": "  auto& camera_info_publisher = camera_info_publishers_.at(stream_index);"
+        },
+        {
+          "line": 516,
+          "text": "  auto& image_publisher = image_publishers_.at(stream_index);"
+        },
+        {
+          "line": 517,
+          "text": "  cv::Mat scaled_image;"
+        },
+        {
+          "line": 518,
+          "text": "  if (stream_index == DEPTH) {"
+        },
+        {
+          "line": 534,
+          "text": "  image_publisher->publish(*image_msg);"
+        },
+        {
+          "line": 535,
+          "text": "  sensor_msgs::msg::CameraInfo camera_info;"
+        },
+        {
+          "line": 536,
+          "text": "  if (stream_index == DEPTH) {"
+        },
+        {
+          "line": 537,
+          "text": "    camera_info = getDepthCameraInfo();"
+        },
+        {
+          "line": 538,
+          "text": "  } else if (stream_index == COLOR) {"
+        },
+        {
+          "line": 539,
+          "text": "    camera_info = getColorCameraInfo();"
+        },
+        {
+          "line": 540,
+          "text": "  } else if (stream_index == INFRA1 || stream_index == INFRA2) {"
+        },
+        {
+          "line": 541,
+          "text": "    double f = getFocalLength(stream_index, width);"
+        },
+        {
+          "line": 542,
+          "text": "    camera_info = getIRCameraInfo(width, height, f);"
+        },
+        {
+          "line": 543,
+          "text": "  }"
+        },
+        {
+          "line": 544,
+          "text": "  if (camera_info.width != static_cast<uint32_t>(image_msg->width) ||"
+        },
+        {
+          "line": 545,
+          "text": "      camera_info.height != static_cast<uint32_t>(image_msg->height)) {"
+        },
+        {
+          "line": 546,
+          "text": "    camera_info.width = image_msg->width;"
+        },
+        {
+          "line": 547,
+          "text": "    camera_info.height = image_msg->height;"
+        },
+        {
+          "line": 548,
+          "text": "  }"
+        },
+        {
+          "line": 549,
+          "text": "  camera_info.header.stamp = timestamp;"
+        },
+        {
+          "line": 550,
+          "text": "  camera_info.header.frame_id ="
+        },
+        {
+          "line": 551,
+          "text": "      depth_registration_ ? depth_aligned_frame_id_[stream_index] : optical_frame_id_[stream_index];"
+        },
+        {
+          "line": 552,
+          "text": ""
+        },
+        {
+          "line": 553,
+          "text": "  camera_info_publisher->publish(camera_info);"
+        },
+        {
+          "line": 554,
+          "text": "}"
+        },
+        {
+          "line": 555,
+          "text": ""
+        },
+        {
+          "line": 556,
+          "text": "void OBCameraNode::setDepthColorSync(bool data) {"
+        }
+      ]
+    },
+    {
+      "path": "/home/jetson/yahboomcar_ros2_ws/software/library_ws/src/ros2_astra_camera/astra_camera/src/ros_service.cpp",
+      "sha256": "2b9feed45f443c0f98df7612e2215e0c93b4573d7611d49820290cab7e429833",
+      "excerpt": [
+        {
+          "line": 31,
+          "text": "    std::string service_name = \"get_\" + stream_name + \"_exposure\";"
+        },
+        {
+          "line": 32,
+          "text": "    get_exposure_srv_[stream_index] = node_->create_service<GetInt32>("
+        },
+        {
+          "line": 33,
+          "text": "        service_name,"
+        },
+        {
+          "line": 34,
+          "text": "        [this, stream_index = stream_index](const std::shared_ptr<GetInt32::Request> request,"
+        },
+        {
+          "line": 35,
+          "text": "                                            std::shared_ptr<GetInt32::Response> response) {"
+        },
+        {
+          "line": 39,
+          "text": "    service_name = \"set_\" + stream_name + \"_exposure\";"
+        },
+        {
+          "line": 40,
+          "text": "    set_exposure_srv_[stream_index] = node_->create_service<SetInt32>("
+        },
+        {
+          "line": 41,
+          "text": "        service_name,"
+        },
+        {
+          "line": 42,
+          "text": "        [this, stream_index = stream_index](const std::shared_ptr<SetInt32::Request> request,"
+        },
+        {
+          "line": 43,
+          "text": "                                            std::shared_ptr<SetInt32::Response> response) {"
+        },
+        {
+          "line": 46,
+          "text": "    service_name = \"get_\" + stream_name + \"_gain\";"
+        },
+        {
+          "line": 47,
+          "text": "    get_gain_srv_[stream_index] = node_->create_service<GetInt32>("
+        },
+        {
+          "line": 48,
+          "text": "        service_name,"
+        },
+        {
+          "line": 49,
+          "text": "        [this, stream_index = stream_index](const std::shared_ptr<GetInt32::Request> request,"
+        },
+        {
+          "line": 50,
+          "text": "                                            std::shared_ptr<GetInt32::Response> response) {"
+        },
+        {
+          "line": 54,
+          "text": "    service_name = \"set_\" + stream_name + \"_gain\";"
+        },
+        {
+          "line": 55,
+          "text": "    set_gain_srv_[stream_index] = node_->create_service<SetInt32>("
+        },
+        {
+          "line": 56,
+          "text": "        service_name,"
+        },
+        {
+          "line": 57,
+          "text": "        [this, stream_index = stream_index](const std::shared_ptr<SetInt32::Request> request,"
+        },
+        {
+          "line": 58,
+          "text": "                                            std::shared_ptr<SetInt32::Response> response) {"
+        },
+        {
+          "line": 61,
+          "text": "    service_name = \"set_\" + stream_name + \"_auto_exposure\";"
+        },
+        {
+          "line": 62,
+          "text": "    set_auto_exposure_srv_[stream_index] = node_->create_service<SetBool>("
+        },
+        {
+          "line": 63,
+          "text": "        service_name,"
+        },
+        {
+          "line": 64,
+          "text": "        [this, stream_index = stream_index](const std::shared_ptr<SetBool::Request> request,"
+        },
+        {
+          "line": 65,
+          "text": "                                            std::shared_ptr<SetBool::Response> response) {"
+        },
+        {
+          "line": 70,
+          "text": ""
+        },
+        {
+          "line": 71,
+          "text": "    toggle_sensor_srv_[stream_index] = node_->create_service<SetBool>("
+        },
+        {
+          "line": 72,
+          "text": "        service_name,"
+        },
+        {
+          "line": 73,
+          "text": "        [this, stream_index = stream_index](const std::shared_ptr<SetBool::Request> request,"
+        },
+        {
+          "line": 74,
+          "text": "                                            std::shared_ptr<SetBool::Response> response) {"
+        },
+        {
+          "line": 77,
+          "text": "    service_name = \"get_\" + stream_name + \"_auto_white_balance\";"
+        },
+        {
+          "line": 78,
+          "text": "    get_white_balance_srv_[stream_index] = node_->create_service<GetInt32>("
+        },
+        {
+          "line": 79,
+          "text": "        service_name,"
+        },
+        {
+          "line": 80,
+          "text": "        [this, stream_index = stream_index](const std::shared_ptr<GetInt32::Request> request,"
+        },
+        {
+          "line": 81,
+          "text": "                                            std::shared_ptr<GetInt32::Response> response) {"
+        },
+        {
+          "line": 85,
+          "text": ""
+        },
+        {
+          "line": 86,
+          "text": "    set_white_balance_srv_[stream_index] = node_->create_service<SetBool>("
+        },
+        {
+          "line": 87,
+          "text": "        service_name,"
+        },
+        {
+          "line": 88,
+          "text": "        [this, stream_index = stream_index](const std::shared_ptr<SetBool::Request> request,"
+        },
+        {
+          "line": 89,
+          "text": "                                            std::shared_ptr<SetBool::Response> response) {"
+        },
+        {
+          "line": 92,
+          "text": "    service_name = \"set_\" + stream_name + \"_mirror\";"
+        },
+        {
+          "line": 93,
+          "text": "    set_mirror_srv_[stream_index] = node_->create_service<SetBool>("
+        },
+        {
+          "line": 94,
+          "text": "        service_name,"
+        },
+        {
+          "line": 95,
+          "text": "        [this, stream_index = stream_index](const std::shared_ptr<SetBool::Request> request,"
+        },
+        {
+          "line": 96,
+          "text": "                                            std::shared_ptr<SetBool::Response> response) {"
+        },
+        {
+          "line": 99,
+          "text": "    service_name = \"get_\" + stream_name + \"_supported_video_modes\";"
+        },
+        {
+          "line": 100,
+          "text": "    get_supported_video_modes_srv_[stream_index] = node_->create_service<GetString>("
+        },
+        {
+          "line": 101,
+          "text": "        service_name,"
+        },
+        {
+          "line": 102,
+          "text": "        [this, stream_index = stream_index](const std::shared_ptr<GetString::Request> request,"
+        },
+        {
+          "line": 103,
+          "text": "                                            std::shared_ptr<GetString::Response> response) {"
+        },
+        {
+          "line": 106,
+          "text": "  }"
+        },
+        {
+          "line": 107,
+          "text": "  set_fan_enable_srv_ = node_->create_service<SetBool>("
+        },
+        {
+          "line": 108,
+          "text": "      \"set_fan_mode\", [this](const std::shared_ptr<SetBool::Request> request,"
+        },
+        {
+          "line": 109,
+          "text": "                             std::shared_ptr<SetBool::Response> response) {"
+        },
+        {
+          "line": 110,
+          "text": "        response->success = setFanCallback(request, response);"
+        },
+        {
+          "line": 112,
+          "text": ""
+        },
+        {
+          "line": 113,
+          "text": "  set_laser_enable_srv_ = node_->create_service<SetBool>("
+        },
+        {
+          "line": 114,
+          "text": "      \"set_laser_enable\", [this](const std::shared_ptr<SetBool::Request> request,"
+        },
+        {
+          "line": 115,
+          "text": "                                 std::shared_ptr<SetBool::Response> response) {"
+        },
+        {
+          "line": 116,
+          "text": "        response->success = setLaserEnableCallback(request, response);"
+        },
+        {
+          "line": 117,
+          "text": "      });"
+        },
+        {
+          "line": 118,
+          "text": "  set_ldp_enable_srv_ = node_->create_service<SetBool>("
+        },
+        {
+          "line": 119,
+          "text": "      \"set_ldp_enable\", [this](const std::shared_ptr<SetBool::Request> request,"
+        },
+        {
+          "line": 120,
+          "text": "                               std::shared_ptr<SetBool::Response> response) {"
+        },
+        {
+          "line": 121,
+          "text": "        response->success = setLdpEnableCallback(request, response);"
+        },
+        {
+          "line": 123,
+          "text": ""
+        },
+        {
+          "line": 124,
+          "text": "  get_device_srv_ = node_->create_service<GetDeviceInfo>("
+        },
+        {
+          "line": 125,
+          "text": "      \"get_device_info\", [this](const std::shared_ptr<GetDeviceInfo::Request> request,"
+        },
+        {
+          "line": 126,
+          "text": "                                std::shared_ptr<GetDeviceInfo::Response> response) {"
+        },
+        {
+          "line": 127,
+          "text": "        response->success = getDeviceInfoCallback(request, response);"
+        },
+        {
+          "line": 128,
+          "text": "      });"
+        },
+        {
+          "line": 129,
+          "text": "  get_sdk_version_srv_ = node_->create_service<GetString>("
+        },
+        {
+          "line": 130,
+          "text": "      \"get_sdk_version\", [this](const std::shared_ptr<GetString::Request> request,"
+        },
+        {
+          "line": 131,
+          "text": "                                std::shared_ptr<GetString::Response> response) {"
+        },
+        {
+          "line": 132,
+          "text": "        response->success = getSDKVersion(request, response);"
+        },
+        {
+          "line": 133,
+          "text": "      });"
+        },
+        {
+          "line": 134,
+          "text": "  get_camera_params_srv_ = node_->create_service<GetCameraParams>("
+        },
+        {
+          "line": 135,
+          "text": "      \"get_camera_params\", [this](const std::shared_ptr<GetCameraParams::Request> request,"
+        },
+        {
+          "line": 136,
+          "text": "                                  std::shared_ptr<GetCameraParams::Response> response) {"
+        },
+        {
+          "line": 137,
+          "text": "        response->success = getCameraParamsCallback(request, response);"
+        },
+        {
+          "line": 138,
+          "text": "      });"
+        },
+        {
+          "line": 139,
+          "text": "  get_camera_info_srv_ = node_->create_service<GetCameraInfo>("
+        },
+        {
+          "line": 140,
+          "text": "      \"get_camera_info\", [this](const std::shared_ptr<GetCameraInfo::Request> request,"
+        },
+        {
+          "line": 141,
+          "text": "                                std::shared_ptr<GetCameraInfo::Response> response) {"
+        },
+        {
+          "line": 142,
+          "text": "        response->success = getCameraInfoCallback(request, response);"
+        },
+        {
+          "line": 143,
+          "text": "      });"
+        },
+        {
+          "line": 398,
+          "text": "  (void)request;"
+        },
+        {
+          "line": 399,
+          "text": "  auto camera_info = getColorCameraInfo();"
+        },
+        {
+          "line": 400,
+          "text": "  response->info = camera_info;"
+        },
+        {
+          "line": 401,
+          "text": "  return true;"
+        },
+        {
+          "line": 402,
+          "text": "}"
+        },
+        {
+          "line": 403,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "path": "/home/jetson/yahboomcar_ros2_ws/software/library_ws/src/ros2_astra_camera/astra_camera/src/uvc_camera_driver.cpp",
+      "sha256": "1c932e6a0f5797d1997b5c2183c046b874b3e14d1e6f9602247e55f6be0c840f",
+      "excerpt": [
+        {
+          "line": 47,
+          "text": "UVCCameraDriver::UVCCameraDriver(rclcpp::Node* node, std::shared_ptr<Parameters> parameters,"
+        },
+        {
+          "line": 48,
+          "text": "                                 sensor_msgs::msg::CameraInfo camera_info,"
+        },
+        {
+          "line": 49,
+          "text": "                                 const std::string& serial_number)"
+        },
+        {
+          "line": 50,
+          "text": "    : node_(node),"
+        },
+        {
+          "line": 51,
+          "text": "      logger_(node_->get_logger()),"
+        },
+        {
+          "line": 52,
+          "text": "      parameters_(std::move(parameters)),"
+        },
+        {
+          "line": 53,
+          "text": "      camera_info_(std::move(camera_info)) {"
+        },
+        {
+          "line": 54,
+          "text": "  auto err = uvc_init(&ctx_, nullptr);"
+        },
+        {
+          "line": 55,
+          "text": "  if (err != UVC_SUCCESS) {"
+        },
+        {
+          "line": 56,
+          "text": "    uvc_perror(err, \"ERROR: uvc_init\");"
+        },
+        {
+          "line": 86,
+          "text": "  if (!color_info_url_.empty()) {"
+        },
+        {
+          "line": 87,
+          "text": "    camera_info_manager_ = std::make_unique<camera_info_manager::CameraInfoManager>("
+        },
+        {
+          "line": 88,
+          "text": "        node_, \"rgb_camera\", color_info_url_);"
+        },
+        {
+          "line": 89,
+          "text": "  }"
+        },
+        {
+          "line": 90,
+          "text": "  image_publisher_ = node_->create_publisher<sensor_msgs::msg::Image>("
+        },
+        {
+          "line": 91,
+          "text": "      \"color/image_raw\","
+        },
+        {
+          "line": 92,
+          "text": "      rclcpp::QoS(rclcpp::QoSInitialization::from_rmw(color_qos_profile_), color_qos_profile_));"
+        },
+        {
+          "line": 93,
+          "text": "  camera_info_publisher_ = node_->create_publisher<sensor_msgs::msg::CameraInfo>("
+        },
+        {
+          "line": 94,
+          "text": "      \"color/camera_info\", rclcpp::QoS(rclcpp::QoSInitialization::from_rmw(color_info_qos_profile_),"
+        },
+        {
+          "line": 95,
+          "text": "                                       color_info_qos_profile_));"
+        },
+        {
+          "line": 96,
+          "text": "  setupCameraControlService();"
+        },
+        {
+          "line": 97,
+          "text": "  openCamera();"
+        },
+        {
+          "line": 163,
+          "text": "sensor_msgs::msg::CameraInfo UVCCameraDriver::getCameraInfo() {"
+        },
+        {
+          "line": 164,
+          "text": "  if (camera_info_manager_ && camera_info_manager_->isCalibrated()) {"
+        },
+        {
+          "line": 165,
+          "text": "    return camera_info_manager_->getCameraInfo();"
+        },
+        {
+          "line": 166,
+          "text": "  } else {"
+        },
+        {
+          "line": 167,
+          "text": "    return camera_info_;"
+        },
+        {
+          "line": 168,
+          "text": "  }"
+        },
+        {
+          "line": 169,
+          "text": "}"
+        },
+        {
+          "line": 170,
+          "text": ""
+        },
+        {
+          "line": 248,
+          "text": "void UVCCameraDriver::setupCameraControlService() {"
+        },
+        {
+          "line": 249,
+          "text": "  get_uvc_exposure_srv_ = node_->create_service<GetInt32>("
+        },
+        {
+          "line": 250,
+          "text": "      \"get_uvc_exposure\", [this](const std::shared_ptr<GetInt32::Request> request,"
+        },
+        {
+          "line": 251,
+          "text": "                                 std::shared_ptr<GetInt32::Response> response) {"
+        },
+        {
+          "line": 252,
+          "text": "        response->success = getUVCExposureCb(request, response);"
+        },
+        {
+          "line": 253,
+          "text": "      });"
+        },
+        {
+          "line": 254,
+          "text": "  set_uvc_exposure_srv_ = node_->create_service<SetInt32>("
+        },
+        {
+          "line": 255,
+          "text": "      \"set_uvc_exposure\", [this](const std::shared_ptr<SetInt32::Request> request,"
+        },
+        {
+          "line": 256,
+          "text": "                                 std::shared_ptr<SetInt32::Response> response) {"
+        },
+        {
+          "line": 257,
+          "text": "        response->success = setUVCExposureCb(request, response);"
+        },
+        {
+          "line": 258,
+          "text": "      });"
+        },
+        {
+          "line": 259,
+          "text": "  get_uvc_gain_srv_ = node_->create_service<GetInt32>("
+        },
+        {
+          "line": 260,
+          "text": "      \"get_uvc_gain\", [this](const std::shared_ptr<GetInt32::Request> request,"
+        },
+        {
+          "line": 261,
+          "text": "                             std::shared_ptr<GetInt32::Response> response) {"
+        },
+        {
+          "line": 262,
+          "text": "        response->success = getUVCGainCb(request, response);"
+        },
+        {
+          "line": 263,
+          "text": "      });"
+        },
+        {
+          "line": 264,
+          "text": "  set_uvc_gain_srv_ = node_->create_service<SetInt32>("
+        },
+        {
+          "line": 265,
+          "text": "      \"set_uvc_gain\", [this](const std::shared_ptr<SetInt32::Request> request,"
+        },
+        {
+          "line": 266,
+          "text": "                             std::shared_ptr<SetInt32::Response> response) {"
+        },
+        {
+          "line": 267,
+          "text": "        response->success = setUVCGainCb(request, response);"
+        },
+        {
+          "line": 268,
+          "text": "      });"
+        },
+        {
+          "line": 269,
+          "text": "  get_uvc_white_balance_srv_ = node_->create_service<GetInt32>("
+        },
+        {
+          "line": 270,
+          "text": "      \"get_uvc_white_balance\", [this](const std::shared_ptr<GetInt32::Request> request,"
+        },
+        {
+          "line": 271,
+          "text": "                                      std::shared_ptr<GetInt32::Response> response) {"
+        },
+        {
+          "line": 272,
+          "text": "        response->success = getUVCWhiteBalanceCb(request, response);"
+        },
+        {
+          "line": 273,
+          "text": "      });"
+        },
+        {
+          "line": 274,
+          "text": "  set_uvc_white_balance_srv_ = node_->create_service<SetInt32>("
+        },
+        {
+          "line": 275,
+          "text": "      \"set_uvc_white_balance\", [this](const std::shared_ptr<SetInt32::Request> request,"
+        },
+        {
+          "line": 276,
+          "text": "                                      std::shared_ptr<SetInt32::Response> response) {"
+        },
+        {
+          "line": 277,
+          "text": "        response->success = setUVCWhiteBalanceCb(request, response);"
+        },
+        {
+          "line": 278,
+          "text": "      });"
+        },
+        {
+          "line": 279,
+          "text": "  set_uvc_auto_exposure_srv_ = node_->create_service<SetBool>("
+        },
+        {
+          "line": 280,
+          "text": "      \"set_uvc_auto_exposure\", [this](const std::shared_ptr<SetBool::Request> request,"
+        },
+        {
+          "line": 281,
+          "text": "                                      std::shared_ptr<SetBool::Response> response) {"
+        },
+        {
+          "line": 282,
+          "text": "        response->success = setUVCAutoExposureCb(request, response);"
+        },
+        {
+          "line": 283,
+          "text": "      });"
+        },
+        {
+          "line": 284,
+          "text": "  set_uvc_auto_white_balance_srv_ = node_->create_service<SetBool>("
+        },
+        {
+          "line": 285,
+          "text": "      \"set_uvc_auto_white_balance\", [this](const std::shared_ptr<SetBool::Request> request,"
+        },
+        {
+          "line": 286,
+          "text": "                                           std::shared_ptr<SetBool::Response> response) {"
+        },
+        {
+          "line": 287,
+          "text": "        response->success = setUVCAutoWhiteBalanceCb(request, response);"
+        },
+        {
+          "line": 289,
+          "text": ""
+        },
+        {
+          "line": 290,
+          "text": "  get_uvc_mirror_srv_ = node_->create_service<GetInt32>("
+        },
+        {
+          "line": 291,
+          "text": "      \"get_uvc_mirror\", [this](const std::shared_ptr<GetInt32::Request> request,"
+        },
+        {
+          "line": 292,
+          "text": "                               std::shared_ptr<GetInt32::Response> response) {"
+        },
+        {
+          "line": 293,
+          "text": "        response->success = getUVCMirrorCb(request, response);"
+        },
+        {
+          "line": 294,
+          "text": "      });"
+        },
+        {
+          "line": 295,
+          "text": "  set_uvc_mirror_srv_ = node_->create_service<SetBool>("
+        },
+        {
+          "line": 296,
+          "text": "      \"set_uvc_mirror\", [this](const std::shared_ptr<SetBool::Request> request,"
+        },
+        {
+          "line": 297,
+          "text": "                               std::shared_ptr<SetBool::Response> response) {"
+        },
+        {
+          "line": 298,
+          "text": "        response->success = setUVCMirrorCb(request, response);"
+        },
+        {
+          "line": 300,
+          "text": ""
+        },
+        {
+          "line": 301,
+          "text": "  toggle_uvc_camera_srv_ = node_->create_service<SetBool>("
+        },
+        {
+          "line": 302,
+          "text": "      \"toggle_uvc_camera\", [this](const std::shared_ptr<SetBool::Request> request,"
+        },
+        {
+          "line": 303,
+          "text": "                                  std::shared_ptr<SetBool::Response> response) {"
+        },
+        {
+          "line": 304,
+          "text": "        response->success = toggleUVCCamera(request, response);"
+        },
+        {
+          "line": 398,
+          "text": "  image_publisher_->publish(image);"
+        },
+        {
+          "line": 399,
+          "text": "  auto camera_info = getCameraInfo();"
+        },
+        {
+          "line": 400,
+          "text": "  camera_info.header.stamp = image.header.stamp;"
+        },
+        {
+          "line": 401,
+          "text": "  camera_info.header.frame_id = image.header.frame_id;"
+        },
+        {
+          "line": 402,
+          "text": "  camera_info_publisher_->publish(camera_info);"
+        },
+        {
+          "line": 403,
+          "text": "}"
+        },
+        {
+          "line": 404,
+          "text": ""
+        },
+        {
+          "line": 405,
+          "text": "void UVCCameraDriver::frameCallbackWrapper(uvc_frame_t* frame, void* ptr) {"
+        }
+      ]
+    },
+    {
+      "path": "/home/jetson/yahboomcar_ros2_ws/software/library_ws/src/ros2_astra_camera/astra_camera/include/astra_camera/point_cloud_proc/depth_traits.h",
+      "sha256": "2c129ef093ecdf78a545c24539584fdbbf01a3dd2a15ccb38d9e82af4a9d23b0",
+      "excerpt": [
+        {
+          "line": 48,
+          "text": "  static inline float toMeters(uint16_t depth) {"
+        },
+        {
+          "line": 49,
+          "text": "    return static_cast<float>(depth) * 0.001f;"
+        },
+        {
+          "line": 50,
+          "text": "  }  // originally mm"
+        },
+        {
+          "line": 51,
+          "text": "  static inline uint16_t fromMeters(float depth) { return std::lround(depth * 1000.0f); }"
+        },
+        {
+          "line": 52,
+          "text": "  // Do nothing - already zero-filled"
+        }
+      ]
+    },
+    {
+      "path": "/home/jetson/yahboomcar_ros2_ws/software/library_ws/install/astra_camera/share/astra_camera/launch/astro_pro_plus.launch.xml",
+      "sha256": "a08bf8ed1217d10ce41b23220ddb4794a38d655e24d022b9b764f0a8a50e472a",
+      "excerpt": [
+        {
+          "line": 1,
+          "text": "<launch>"
+        },
+        {
+          "line": 2,
+          "text": "    <!-- unique camera name-->"
+        },
+        {
+          "line": 3,
+          "text": "    <arg name=\"camera_name\" default=\"camera\"/>"
+        },
+        {
+          "line": 4,
+          "text": "    <!-- Hardware depth registration -->"
+        },
+        {
+          "line": 5,
+          "text": "    <arg name=\"depth_registration\" default=\"false\"/>"
+        },
+        {
+          "line": 6,
+          "text": "    <arg name=\"serial_number\" default=\"\"/>"
+        },
+        {
+          "line": 7,
+          "text": "    <arg name=\"device_num\" default=\"1\"/>"
+        },
+        {
+          "line": 8,
+          "text": "    <arg name=\"vendor_id\" default=\"0x2bc5\"/>"
+        },
+        {
+          "line": 9,
+          "text": "    <arg name=\"product_id\" default=\"\"/>"
+        },
+        {
+          "line": 10,
+          "text": "    <arg name=\"enable_point_cloud\" default=\"true\"/>"
+        },
+        {
+          "line": 11,
+          "text": "    <arg name=\"enable_colored_point_cloud\" default=\"false\"/>"
+        },
+        {
+          "line": 12,
+          "text": "    <arg name=\"point_cloud_qos\" default=\"default\"/>"
+        },
+        {
+          "line": 13,
+          "text": "    <arg name=\"connection_delay\" default=\"100\"/>"
+        },
+        {
+          "line": 14,
+          "text": "    <arg name=\"color_width\" default=\"640\"/>"
+        },
+        {
+          "line": 15,
+          "text": "    <arg name=\"color_height\" default=\"480\"/>"
+        },
+        {
+          "line": 16,
+          "text": "    <arg name=\"color_fps\" default=\"30\"/>"
+        },
+        {
+          "line": 17,
+          "text": "    <arg name=\"enable_color\" default=\"true\"/>"
+        },
+        {
+          "line": 18,
+          "text": "    <arg name=\"flip_color\" default=\"false\"/>"
+        },
+        {
+          "line": 19,
+          "text": "    <arg name=\"color_qos\" default=\"default\"/>"
+        },
+        {
+          "line": 20,
+          "text": "    <arg name=\"color_camera_info_qos\" default=\"default\"/>"
+        },
+        {
+          "line": 21,
+          "text": "    <arg name=\"depth_width\" default=\"640\"/>"
+        },
+        {
+          "line": 22,
+          "text": "    <arg name=\"depth_height\" default=\"480\"/>"
+        },
+        {
+          "line": 23,
+          "text": "    <arg name=\"depth_fps\" default=\"30\"/>"
+        },
+        {
+          "line": 24,
+          "text": "    <arg name=\"enable_depth\" default=\"true\"/>"
+        },
+        {
+          "line": 25,
+          "text": "    <arg name=\"flip_depth\" default=\"false\"/>"
+        },
+        {
+          "line": 26,
+          "text": "    <arg name=\"depth_qos\" default=\"default\"/>"
+        },
+        {
+          "line": 27,
+          "text": "    <arg name=\"depth_camera_info_qos\" default=\"default\"/>"
+        },
+        {
+          "line": 28,
+          "text": "    <arg name=\"ir_width\" default=\"640\"/>"
+        },
+        {
+          "line": 29,
+          "text": "    <arg name=\"ir_height\" default=\"480\"/>"
+        },
+        {
+          "line": 30,
+          "text": "    <arg name=\"ir_fps\" default=\"30\"/>"
+        },
+        {
+          "line": 31,
+          "text": "    <arg name=\"enable_ir\" default=\"true\"/>"
+        },
+        {
+          "line": 32,
+          "text": "    <arg name=\"flip_ir\" default=\"false\"/>"
+        },
+        {
+          "line": 33,
+          "text": "    <arg name=\"ir_qos\" default=\"default\"/>"
+        },
+        {
+          "line": 34,
+          "text": "    <arg name=\"ir_camera_info_qos\" default=\"default\"/>"
+        },
+        {
+          "line": 35,
+          "text": "    <arg name=\"publish_tf\" default=\"true\"/>"
+        },
+        {
+          "line": 36,
+          "text": "    <arg name=\"tf_publish_rate\" default=\"10.0\"/>"
+        },
+        {
+          "line": 37,
+          "text": "    <arg name=\"ir_info_uri\" default=\"\"/>"
+        },
+        {
+          "line": 38,
+          "text": "    <arg name=\"color_info_uri\" default=\"\"/>"
+        },
+        {
+          "line": 39,
+          "text": "    <arg name=\"color_roi_x\" default=\"-1\"/>"
+        },
+        {
+          "line": 40,
+          "text": "    <arg name=\"color_roi_y\" default=\"-1\"/>"
+        },
+        {
+          "line": 41,
+          "text": "    <arg name=\"color_roi_width\" default=\"-1\"/>"
+        },
+        {
+          "line": 42,
+          "text": "    <arg name=\"color_roi_height\" default=\"-1\"/>"
+        },
+        {
+          "line": 43,
+          "text": "    <arg name=\"depth_roi_x\" default=\"-1\"/>"
+        },
+        {
+          "line": 44,
+          "text": "    <arg name=\"depth_roi_y\" default=\"-1\"/>"
+        },
+        {
+          "line": 45,
+          "text": "    <arg name=\"depth_roi_width\" default=\"-1\"/>"
+        },
+        {
+          "line": 46,
+          "text": "    <arg name=\"depth_roi_height\" default=\"-1\"/>"
+        },
+        {
+          "line": 47,
+          "text": "    <arg name=\"depth_scale\" default=\"1\"/>"
+        },
+        {
+          "line": 48,
+          "text": "    <arg name=\"color_depth_synchronization\" default=\"false\"/>"
+        },
+        {
+          "line": 49,
+          "text": "    <arg name=\"use_uvc_camera\" default=\"true\"/>"
+        },
+        {
+          "line": 50,
+          "text": "    <arg name=\"uvc_vendor_id\" default=\"0x2bc5\"/>"
+        },
+        {
+          "line": 51,
+          "text": "    <arg name=\"uvc_product_id\" default=\"0x050f\"/>"
+        },
+        {
+          "line": 52,
+          "text": "    <arg name=\"uvc_retry_count\" default=\"100\"/>"
+        },
+        {
+          "line": 53,
+          "text": "    <arg name=\"uvc_camera_format\" default=\"mjpeg\"/>"
+        },
+        {
+          "line": 54,
+          "text": "    <arg name=\"uvc_flip\" default=\"false\"/>"
+        },
+        {
+          "line": 55,
+          "text": "    <arg name=\"oni_log_level\" default=\"verbose\"/>"
+        },
+        {
+          "line": 56,
+          "text": "    <arg name=\"oni_log_to_console\" default=\"false\"/>"
+        },
+        {
+          "line": 57,
+          "text": "    <arg name=\"oni_log_to_file\" default=\"false\"/>"
+        },
+        {
+          "line": 58,
+          "text": "    <arg name=\"enable_d2c_viewer\" default=\"false\"/>"
+        },
+        {
+          "line": 59,
+          "text": "    <arg name=\"enable_publish_extrinsic\" default=\"false\"/>"
+        },
+        {
+          "line": 60,
+          "text": "    <group>"
+        },
+        {
+          "line": 61,
+          "text": "        <push-ros-namespace namespace=\"$(var camera_name)\"/>"
+        },
+        {
+          "line": 62,
+          "text": "        <node name=\"camera\" pkg=\"astra_camera\" exec=\"astra_camera_node\" output=\"screen\">"
+        },
+        {
+          "line": 63,
+          "text": "            <param name=\"camera_name\" value=\"$(var camera_name)\"/>"
+        },
+        {
+          "line": 64,
+          "text": "            <param name=\"depth_registration\" value=\"$(var depth_registration)\"/>"
+        },
+        {
+          "line": 65,
+          "text": "            <param name=\"serial_number\" value=\"$(var serial_number)\"/>"
+        },
+        {
+          "line": 66,
+          "text": "            <param name=\"device_num\" value=\"$(var device_num)\"/>"
+        },
+        {
+          "line": 67,
+          "text": "            <param name=\"vendor_id\" value=\"$(var vendor_id)\"/>"
+        },
+        {
+          "line": 68,
+          "text": "            <param name=\"product_id\" value=\"$(var product_id)\"/>"
+        },
+        {
+          "line": 69,
+          "text": "            <param name=\"enable_point_cloud\" value=\"$(var enable_point_cloud)\"/>"
+        },
+        {
+          "line": 70,
+          "text": "            <param name=\"enable_colored_point_cloud\" value=\"$(var enable_colored_point_cloud)\"/>"
+        },
+        {
+          "line": 71,
+          "text": "            <param name=\"point_cloud_qos\" value=\"$(var point_cloud_qos)\"/>"
+        },
+        {
+          "line": 72,
+          "text": "            <param name=\"connection_delay\" value=\"$(var connection_delay)\"/>"
+        },
+        {
+          "line": 73,
+          "text": "            <param name=\"color_width\" value=\"$(var color_width)\"/>"
+        },
+        {
+          "line": 74,
+          "text": "            <param name=\"color_height\" value=\"$(var color_height)\"/>"
+        },
+        {
+          "line": 75,
+          "text": "            <param name=\"color_fps\" value=\"$(var color_fps)\"/>"
+        },
+        {
+          "line": 76,
+          "text": "            <param name=\"enable_color\" value=\"$(var enable_color)\"/>"
+        },
+        {
+          "line": 77,
+          "text": "            <param name=\"flip_color\" value=\"$(var flip_color)\"/>"
+        },
+        {
+          "line": 78,
+          "text": "            <param name=\"color_qos\" value=\"$(var color_qos)\"/>"
+        },
+        {
+          "line": 79,
+          "text": "            <param name=\"color_camera_info_qos\" value=\"$(var color_camera_info_qos)\"/>"
+        },
+        {
+          "line": 80,
+          "text": "            <param name=\"depth_width\" value=\"$(var depth_width)\"/>"
+        },
+        {
+          "line": 81,
+          "text": "            <param name=\"depth_height\" value=\"$(var depth_height)\"/>"
+        },
+        {
+          "line": 82,
+          "text": "            <param name=\"depth_fps\" value=\"$(var depth_fps)\"/>"
+        },
+        {
+          "line": 83,
+          "text": "            <param name=\"flip_depth\" value=\"$(var flip_depth)\"/>"
+        },
+        {
+          "line": 84,
+          "text": "            <param name=\"depth_qos\" value=\"$(var depth_qos)\"/>"
+        },
+        {
+          "line": 85,
+          "text": "            <param name=\"depth_camera_info_qos\" value=\"$(var depth_camera_info_qos)\"/>"
+        },
+        {
+          "line": 86,
+          "text": "            <param name=\"enable_depth\" value=\"$(var enable_depth)\"/>"
+        },
+        {
+          "line": 87,
+          "text": "            <param name=\"ir_width\" value=\"$(var ir_width)\"/>"
+        },
+        {
+          "line": 88,
+          "text": "            <param name=\"ir_height\" value=\"$(var ir_height)\"/>"
+        },
+        {
+          "line": 89,
+          "text": "            <param name=\"ir_fps\" value=\"$(var ir_fps)\"/>"
+        },
+        {
+          "line": 90,
+          "text": "            <param name=\"enable_ir\" value=\"$(var enable_ir)\"/>"
+        },
+        {
+          "line": 91,
+          "text": "            <param name=\"flip_ir\" value=\"$(var flip_ir)\"/>"
+        },
+        {
+          "line": 92,
+          "text": "            <param name=\"ir_qos\" value=\"$(var ir_qos)\"/>"
+        },
+        {
+          "line": 93,
+          "text": "            <param name=\"ir_camera_info_qos\" value=\"$(var ir_camera_info_qos)\"/>"
+        },
+        {
+          "line": 94,
+          "text": "            <param name=\"publish_tf\" value=\"$(var publish_tf)\"/>"
+        },
+        {
+          "line": 95,
+          "text": "            <param name=\"tf_publish_rate\" value=\"$(var tf_publish_rate)\"/>"
+        },
+        {
+          "line": 96,
+          "text": "            <param name=\"ir_info_uri\" value=\"$(var ir_info_uri)\"/>"
+        },
+        {
+          "line": 97,
+          "text": "            <param name=\"color_info_uri\" value=\"$(var color_info_uri)\"/>"
+        },
+        {
+          "line": 98,
+          "text": "            <param name=\"color_roi_x\" value=\"$(var color_roi_x)\"/>"
+        },
+        {
+          "line": 99,
+          "text": "            <param name=\"color_roi_y\" value=\"$(var color_roi_y)\"/>"
+        },
+        {
+          "line": 100,
+          "text": "            <param name=\"color_roi_width\" value=\"$(var color_roi_width)\"/>"
+        },
+        {
+          "line": 101,
+          "text": "            <param name=\"color_roi_height\" value=\"$(var color_roi_height)\"/>"
+        },
+        {
+          "line": 102,
+          "text": "            <param name=\"depth_roi_x\" value=\"$(var depth_roi_x)\"/>"
+        },
+        {
+          "line": 103,
+          "text": "            <param name=\"depth_roi_y\" value=\"$(var depth_roi_y)\"/>"
+        },
+        {
+          "line": 104,
+          "text": "            <param name=\"depth_roi_width\" value=\"$(var depth_roi_width)\"/>"
+        },
+        {
+          "line": 105,
+          "text": "            <param name=\"depth_roi_height\" value=\"$(var depth_roi_height)\"/>"
+        },
+        {
+          "line": 106,
+          "text": "            <param name=\"depth_scale\" value=\"$(var depth_scale)\"/>"
+        },
+        {
+          "line": 107,
+          "text": "            <param name=\"color_depth_synchronization\" value=\"$(var color_depth_synchronization)\"/>"
+        },
+        {
+          "line": 108,
+          "text": "            <param name=\"use_uvc_camera\" value=\"$(var use_uvc_camera)\"/>"
+        },
+        {
+          "line": 109,
+          "text": "            <param name=\"uvc_vendor_id\" value=\"$(var uvc_vendor_id)\"/>"
+        },
+        {
+          "line": 110,
+          "text": "            <param name=\"uvc_product_id\" value=\"$(var uvc_product_id)\"/>"
+        },
+        {
+          "line": 111,
+          "text": "            <param name=\"uvc_retry_count\" value=\"$(var uvc_retry_count)\"/>"
+        },
+        {
+          "line": 112,
+          "text": "            <param name=\"uvc_camera_format\" value=\"$(var uvc_camera_format)\"/>"
+        },
+        {
+          "line": 113,
+          "text": "            <param name=\"uvc_flip\" value=\"$(var uvc_flip)\"/>"
+        },
+        {
+          "line": 114,
+          "text": "            <param name=\"oni_log_level\" value=\"$(var oni_log_level)\"/>"
+        },
+        {
+          "line": 115,
+          "text": "            <param name=\"oni_log_to_console\" value=\"$(var oni_log_to_console)\"/>"
+        },
+        {
+          "line": 116,
+          "text": "            <param name=\"oni_log_to_file\" value=\"$(var oni_log_to_file)\"/>"
+        },
+        {
+          "line": 117,
+          "text": "            <param name=\"enable_d2c_viewer\" value=\"$(var enable_d2c_viewer)\"/>"
+        },
+        {
+          "line": 118,
+          "text": "            <param name=\"enable_publish_extrinsic\" value=\"$(var enable_publish_extrinsic)\"/>"
+        },
+        {
+          "line": 119,
+          "text": "            <remap from=\"/$(var camera_name)/depth/color/points\" to=\"/$(var camera_name)/depth_registered/points\"/>"
+        },
+        {
+          "line": 120,
+          "text": "        </node>"
+        },
+        {
+          "line": 121,
+          "text": "    </group>"
+        },
+        {
+          "line": 122,
+          "text": "</launch>"
+        }
+      ]
+    }
+  ]
+}

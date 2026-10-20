@@ -1,0 +1,72 @@
+{
+  "date_utc": "2026-10-20",
+  "host": "192.168.43.53",
+  "scope": "ROS source and dependencies inspected; pure decoder checked in memory. No serial open, no driver launch, no deployment.",
+  "port": "/dev/myserial",
+  "resolved_port": "/dev/ttyUSB2",
+  "library_source_sha256": "bc0f1313f4f2527cca5f631373ab66cf03c66035d1732a3f2fd665f32a27c139",
+  "library_instantiated": false,
+  "vendor_ros_driver": {
+    "path": "/home/jetson/yahboomcar_ros2_ws/yahboomcar_ws/src/yahboomcar_bringup/yahboomcar_bringup/Mcnamu_driver_X3.py",
+    "sha256": "2be9784289154b3d2ec972266ccdba5056ffe317b06a4d17c2a9a48e42a8d39a",
+    "excerpt": [
+      {
+        "line": 11,
+        "text": "from Rosmaster_Lib import Rosmaster"
+      },
+      {
+        "line": 32,
+        "text": "\t\tself.car = Rosmaster()"
+      },
+      {
+        "line": 55,
+        "text": "\t\tself.sub_cmd_vel = self.create_subscription(Twist,\"cmd_vel\",self.cmd_vel_callback,1)"
+      },
+      {
+        "line": 64,
+        "text": "\t\tself.imuPublisher = self.create_publisher(Imu,\"imu/data_raw\",100)"
+      },
+      {
+        "line": 65,
+        "text": "\t\tself.magPublisher = self.create_publisher(MagneticField,\"imu/mag\",100)"
+      },
+      {
+        "line": 75,
+        "text": "\tdef cmd_vel_callback(self,msg):"
+      },
+      {
+        "line": 121,
+        "text": "\t\t#print (\"mag: \",self.car.get_magnetometer_data())\t\t"
+      },
+      {
+        "line": 124,
+        "text": "\t\tax, ay, az = self.car.get_accelerometer_data()"
+      },
+      {
+        "line": 125,
+        "text": "\t\tgx, gy, gz = self.car.get_gyroscope_data()"
+      },
+      {
+        "line": 126,
+        "text": "\t\tmx, my, mz = self.car.get_magnetometer_data()"
+      },
+      {
+        "line": 162,
+        "text": "\t\tself.imuPublisher.publish(imu)"
+      },
+      {
+        "line": 163,
+        "text": "\t\tself.magPublisher.publish(mag)"
+      }
+    ]
+  },
+  "dependencies_available": [
+    "serial",
+    "rclpy",
+    "sensor_msgs/Imu",
+    "std_msgs/Int32MultiArray",
+    "std_msgs/Float64MultiArray"
+  ],
+  "imu_chip_model": "not identified; supports report types 0x0B and 0x0E from archived vendor parser",
+  "magnetic_units": "unverified"
+}

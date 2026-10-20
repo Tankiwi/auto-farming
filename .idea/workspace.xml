@@ -2,27 +2,35 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0ab208b8-0583-429d-9092-6b8ea092741f" name="更改" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" afterPath="$PROJECT_DIR$/.gitattributes" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.obsidian/workspace.json" beforeDir="false" afterPath="$PROJECT_DIR$/.obsidian/workspace.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/architecture.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/architecture.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/changes/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/changes/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/environment/hardware.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/environment/hardware.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/environment/software.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/environment/software.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/guides/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/guides/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/guides/remote-access.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/guides/remote-access.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/modules/chassis.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/modules/chassis.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/guides/sensors.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/guides/sensors.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/modules/sensors.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/modules/sensors.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/pending.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/pending.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/references/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/references/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/references/rosmaster-protocol.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/references/rosmaster-protocol.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/status.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/status.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/arm/AGENTS.md" beforeDir="false" afterPath="$PROJECT_DIR$/modules/arm/AGENTS.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/arm/protocol.md" beforeDir="false" afterPath="$PROJECT_DIR$/modules/arm/protocol.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/chassis/AGENTS.md" beforeDir="false" afterPath="$PROJECT_DIR$/modules/chassis/AGENTS.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/chassis/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/modules/chassis/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/troubleshooting/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/troubleshooting/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/arm/environment.md" beforeDir="false" afterPath="$PROJECT_DIR$/modules/arm/environment.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/chassis/environment.md" beforeDir="false" afterPath="$PROJECT_DIR$/modules/chassis/environment.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/modules/chassis/hardware.md" beforeDir="false" afterPath="$PROJECT_DIR$/modules/chassis/hardware.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/chassis/troubleshooting.md" beforeDir="false" afterPath="$PROJECT_DIR$/modules/chassis/troubleshooting.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/host/environment.md" beforeDir="false" afterPath="$PROJECT_DIR$/modules/host/environment.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/modules/host/hardware.md" beforeDir="false" afterPath="$PROJECT_DIR$/modules/host/hardware.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/modules/host/remote-access.md" beforeDir="false" afterPath="$PROJECT_DIR$/modules/host/remote-access.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/host/troubleshooting.md" beforeDir="false" afterPath="$PROJECT_DIR$/modules/host/troubleshooting.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/sensors/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/modules/sensors/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/sensors/environment.md" beforeDir="false" afterPath="$PROJECT_DIR$/modules/sensors/environment.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/modules/sensors/hardware.md" beforeDir="false" afterPath="$PROJECT_DIR$/modules/sensors/hardware.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/sensors/operations.md" beforeDir="false" afterPath="$PROJECT_DIR$/modules/sensors/operations.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/sensors/troubleshooting.md" beforeDir="false" afterPath="$PROJECT_DIR$/modules/sensors/troubleshooting.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,17 +49,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "main",
-    "nodejs_package_manager_path": "npm"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>

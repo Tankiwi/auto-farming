@@ -1,6 +1,6 @@
 # 参考资料与证据附件
 
-更新：2026-10-19｜设备证据按各专题日期查阅；本次只读提取安装库源码，未操作控制串口。
+更新：2026-10-20｜设备证据按专题日期查阅；本次整理只维护本地文档，不操作设备。
 
 ## 文件与参考资料
 
@@ -20,6 +20,16 @@
 - [官方 ROSMASTER X3 Plus 资料入口](https://www.yahboom.com/study/ROSMASTER-X3-PLUS)；资料访问方式按官方页面或向团队获取。
 - [官方 Rosmaster 说明书](https://www.yahboom.com/build?id=5566&cid=542)，2026-10-11 记录曾读取接口布局与出厂固件说明；示例板卡版本与本机是否一致待核对。
 - [官方 X3 Plus GitHub 资料](https://github.com/YahboomTechnology/ROSMASTERX3-PLUS)。选择课程时需区分主控、ROS 版本和板卡版本。
+
+## 2026-10-20 传感器证据
+
+| 证据 | 内容与限制 |
+|---|---|
+| [传感器 API 指纹](../reports/2026-10-20-sensor-api-inventory.json) | 11 个远端文件 SHA-256、路径/行号与摘录，非完整源码备份 |
+| [Microdia 查询](../reports/2026-10-20-microdia-inventory.json) | 视频节点、格式、安装包与配置哈希；能力查询不等于采集 |
+| [IMU 接口核对](../reports/2026-10-20-imu-interface.json) | 原厂 ROS 耦合、库哈希与依赖；agent 未打开底板串口 |
+| [启动日志报告](../reports/2026-10-20-sensors-startup.md) | 用户日志及原附件哈希，序列号已脱敏；IMU 连续计数，其他设备仅启动流程 |
+| [随后 8 秒订阅](../reports/2026-10-20-sensors-subscription-audit.json) | 当时无驱动节点/进程、10 路话题计数 0；不否定此前运行，也不证明正常停止 |
 
 ## 本地原件
 

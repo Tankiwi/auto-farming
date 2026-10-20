@@ -1,6 +1,6 @@
 # 文档导航
 
-更新：2026-10-19。设备事实见带日期的证据；底盘局部测试见[报告](reports/2026-10-19-motor-test.md)，最新用户反馈见[车型前检与线程修复](reports/2026-10-19-motion-demo-preflight.md)。
+更新：2026-10-20。最新传感器证据见[用户启动日志与随后只读复查](reports/2026-10-20-sensors-startup.md)；底盘局部测试及车型前检保持 2026-10-19 的验证范围。
 
 ## 按任务阅读
 
@@ -9,6 +9,7 @@
 | 了解已知能力与阶段 | [状态](status.md)、[待验证信息](pending.md) |
 | 查询设备与连接 | [硬件和接线](environment/hardware.md)、[软件环境](environment/software.md) |
 | 连接、启动、检查、停止 | [使用指南总览](guides/README.md)、[远程连接](guides/remote-access.md)、[传感器](guides/sensors.md)、[录制回放](guides/data-recording.md)、[机械臂教程](guides/arm.md) |
+| 启动指定传感器、用 Python 读数据 | [上传与参数入口](guides/sensors.md#按参数启动驱动)、[订阅读取](guides/sensors.md#python-读取示例)、[九轴 IMU](guides/sensors.md#九轴-imu-读取) |
 | 遇到故障 | [故障排查](troubleshooting/README.md) |
 | 测试底盘电机 | [底盘分步指南](guides/chassis.md)、[2026-10-19 实测](reports/2026-10-19-motor-test.md) |
 | 上传整车示例、处理车型前检 | [上传与版本核对](guides/chassis.md#上传与版本核对)、[显式车型配置](guides/chassis.md#显式设置-x3-plus-车型)、[用户日志](reports/2026-10-19-motion-demo-preflight.md) |

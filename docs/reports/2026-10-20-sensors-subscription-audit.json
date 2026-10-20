@@ -1,0 +1,41 @@
+{
+  "date_utc": "2026-10-20",
+  "host": "192.168.43.53",
+  "scope": "8s subscriptions to existing publishers only; no serial open, no driver start/stop, no configuration change",
+  "nodes": [
+    "farm_sensor_readonly_audit",
+    "_ros2cli_daemon_77_2286c8bb4efd4015ae7e101916b2e5f1"
+  ],
+  "topics": {
+    "/scan": {
+      "count": 0
+    },
+    "/camera/color/image_raw": {
+      "count": 0
+    },
+    "/camera/depth/image_raw": {
+      "count": 0
+    },
+    "/camera/ir/image_raw": {
+      "count": 0
+    },
+    "/camera/depth/points": {
+      "count": 0
+    },
+    "/microdia/image_raw": {
+      "count": 0
+    },
+    "/microdia/camera_info": {
+      "count": 0
+    },
+    "/imu/data_raw": {
+      "count": 0
+    },
+    "/imu/raw9": {
+      "count": 0
+    },
+    "/imu/rpy": {
+      "count": 0
+    }
+  }
+}

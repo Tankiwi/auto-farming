@@ -1,0 +1,155 @@
+^Cjetson@yahboom:~python3 ~/start-sensors.py allll
+ROS_DOMAIN_ID=77
+astra: ros2 launch astra_camera astro_pro_plus.launch.xml
+microdia: ros2 run usb_cam usb_cam_node_exe --ros-args -r __ns:=/microdia -r __node:=microdia_camera -p video_device:=/dev/v4l/by-id/usb-Sonix_Technology_Co.__Ltd._USB_2.0_Camera-video-index0 -p pixel_format:=yuyv -p io_method:=mmap -p image_width:=640 -p image_height:=480 -p framerate:=30.0 -p frame_id:=microdia_optical_frame -p camera_name:=microdia -p brightness:=-1
+lidar: ros2 launch ydlidar_ros2_driver ydlidar_raw_launch.py
+imu: /usr/bin/python3 -u /home/jetson/read-imu.py
+Microdia 采集节点：/dev/video0
+驱动已发起启动，日志如下；收到数据才表示采集通过。Ctrl+C 停止。
+[INFO] [launch]: All log files can be found below /home/jetson/.ros/log/2026-10-20-19-18-31-760396-yahboom-144497
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [1792495111.806689082] [microdia.microdia_camera]: camera_name value: microdia
+[WARN] [1792495111.806961025] [microdia.microdia_camera]: framerate: 30.000000
+[INFO] [launch]: All log files can be found below /home/jetson/.ros/log/2026-10-20-19-18-31-813212-yahboom-144499
+[INFO] [1792495111.816108362] [microdia.microdia_camera]: using default calibration URL
+[INFO] [1792495111.816364785] [microdia.microdia_camera]: camera calibration URL: file:///home/jetson/.ros/camera_info/microdia.yaml
+[ERROR] [1792495111.816507700] [camera_calibration_parsers]: Unable to open camera calibration file [/home/jetson/.ros/camera_info/microdia.yaml]
+[WARN] [1792495111.816539189] [microdia.microdia_camera]: Camera calibration file /home/jetson/.ros/camera_info/microdia.yaml not found
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [1792495111.892644458] [microdia.microdia_camera]: Starting 'microdia' (/dev/video0) at 640x480 via mmap (yuyv) at 30 FPS
+[swscaler @ 0xaaaac8c447e0] No accelerated colorspace conversion found from yuv422p to rgb24.
+This device supports the following formats:
+        YUYV 4:2:2 640 x 480 (30 Hz)
+        YUYV 4:2:2 640 x 480 (25 Hz)
+        YUYV 4:2:2 640 x 480 (20 Hz)
+        YUYV 4:2:2 640 x 480 (15 Hz)
+        YUYV 4:2:2 640 x 480 (10 Hz)
+        YUYV 4:2:2 640 x 480 (5 Hz)
+        YUYV 4:2:2 352 x 288 (30 Hz)
+        YUYV 4:2:2 352 x 288 (25 Hz)
+        YUYV 4:2:2 352 x 288 (20 Hz)
+        YUYV 4:2:2 352 x 288 (15 Hz)
+        YUYV 4:2:2 352 x 288 (10 Hz)
+        YUYV 4:2:2 352 x 288 (5 Hz)
+        YUYV 4:2:2 320 x 240 (30 Hz)
+        YUYV 4:2:2 320 x 240 (25 Hz)
+        YUYV 4:2:2 320 x 240 (20 Hz)
+        YUYV 4:2:2 320 x 240 (15 Hz)
+        YUYV 4:2:2 320 x 240 (10 Hz)
+        YUYV 4:2:2 320 x 240 (5 Hz)
+        YUYV 4:2:2 176 x 144 (30 Hz)
+        YUYV 4:2:2 176 x 144 (25 Hz)
+        YUYV 4:2:2 176 x 144 (20 Hz)
+        YUYV 4:2:2 176 x 144 (15 Hz)
+        YUYV 4:2:2 176 x 144 (10 Hz)
+        YUYV 4:2:2 176 x 144 (5 Hz)
+        YUYV 4:2:2 160 x 120 (30 Hz)
+        YUYV 4:2:2 160 x 120 (25 Hz)
+        YUYV 4:2:2 160 x 120 (20 Hz)
+        YUYV 4:2:2 160 x 120 (15 Hz)
+        YUYV 4:2:2 160 x 120 (10 Hz)
+        YUYV 4:2:2 160 x 120 (5 Hz)
+[INFO] [1792495111.952292699] [farm_imu_reader]: 只接收底板上报；不发送串口指令。等待 IMU 数据……
+[INFO] [1792495111.955812373] [farm_imu_reader]: IMU count=6 age=0.00s bad_checksum=0
+unknown control 'white_balance_temperature_auto'
+
+[INFO] [1792495111.961884207] [microdia.microdia_camera]: Setting 'white_balance_temperature_auto' to 1
+[INFO] [1792495111.962001970] [microdia.microdia_camera]: Setting 'exposure_auto' to 3
+unknown control 'exposure_auto'
+
+[INFO] [1792495111.967882056] [microdia.microdia_camera]: Setting 'focus_auto' to 0
+unknown control 'focus_auto'
+
+[INFO] [1792495111.988128397] [microdia.microdia_camera]: Timer triggering every 33 ms
+[INFO] [ydlidar_ros2_driver_node-1]: process started with pid [144599]
+[ydlidar_ros2_driver_node-1] [INFO] [1792495112.097430352] [ydlidar_ros2_driver_node]: [YDLIDAR INFO] Current ROS Driver Version: 1.0.1
+[ydlidar_ros2_driver_node-1]
+[ydlidar_ros2_driver_node-1] [2026-10-20 19:18:32][info] SDK initializing
+[ydlidar_ros2_driver_node-1] [2026-10-20 19:18:32][info] SDK has been initialized
+[ydlidar_ros2_driver_node-1] [2026-10-20 19:18:32][info] SDK Version: 1.2.11
+[ydlidar_ros2_driver_node-1] [2026-10-20 19:18:32][info] Stop Lidar
+[INFO] [astra_camera_node-1]: process started with pid [144614]
+[astra_camera_node-1] Warning: class_loader.impl: SEVERE WARNING!!! A namespace collision has occurred with plugin factory for class rclcpp_components::NodeFactoryTemplate<astra_camera::OBCameraNodeFactory>. New factory will OVERWRITE existing one. This situation occurs when libraries containing plugins are directly linked against an executable (the one running right now generating this message). Please separate plugins out into their own library or just don't link against the library and use either class_loader::ClassLoader/MultiLibraryClassLoader to open.
+[astra_camera_node-1]          at line 253 in /opt/ros/humble/include/class_loader/class_loader/class_loader_core.hpp
+[astra_camera_node-1] [INFO] [1792495112.481167048] [camera.camera]: init done.
+[astra_camera_node-1] [INFO] [1792495112.481253642] [camera.camera]: Waiting for device connection...
+[astra_camera_node-1] [INFO] [1792495112.481606355] [device_listener]: Found 1 devices
+[astra_camera_node-1] [INFO] [1792495112.481654452] [camera.camera]: Trying to open device: 2bc5/060f@1/13
+[ydlidar_ros2_driver_node-1] [2026-10-20 19:18:32][info] Connect elapsed time 527 ms
+[ydlidar_ros2_driver_node-1] [2026-10-20 19:18:32][info] Lidar successfully connected [/dev/ydlidar:512000]
+[ydlidar_ros2_driver_node-1] [2026-10-20 19:18:32][info] Lidar running correctly! The health status good
+[ydlidar_ros2_driver_node-1] [2026-10-20 19:18:32][info] Current Lidar Model Code 101
+[ydlidar_ros2_driver_node-1] [2026-10-20 19:18:32][info] Baseplate device info
+[ydlidar_ros2_driver_node-1] Firmware version: 2.1
+[ydlidar_ros2_driver_node-1] Hardware version: 1
+[ydlidar_ros2_driver_node-1] Model: TG30
+[ydlidar_ros2_driver_node-1] Serial: [LIDAR_SERIAL_REDACTED]
+[astra_camera_node-1] [INFO] [1792495112.678080805] [camera.camera]: Device connected: Astra serial number: [CAMERA_SERIAL_REDACTED]
+[astra_camera_node-1] [INFO] [1792495112.678319467] [camera.camera]: starting device
+[ydlidar_ros2_driver_node-1] [2026-10-20 19:18:32][info] Origin sample rate code: 20
+[ydlidar_ros2_driver_node-1] [2026-10-20 19:18:32][info] Current sample rate: 20.00K
+[ydlidar_ros2_driver_node-1] [2026-10-20 19:18:32][info] Current scan frequency: 7.00Hz
+[astra_camera_node-1] [INFO] [1792495112.713228645] [camera.camera]: color is not enable
+[astra_camera_node-1] [INFO] [1792495112.728430185] [camera.camera]: set depth video mode Resolution :640x480@30Hz
+[astra_camera_node-1] format PIXEL_FORMAT_DEPTH_1_MM
+[astra_camera_node-1] [INFO] [1792495112.729211325] [camera.camera]: set ir video mode Resolution :640x480@30Hz
+[astra_camera_node-1] format
+[astra_camera_node-1] [INFO] [1792495112.751409139] [camera.camera]: open uvc camera
+[ydlidar_ros2_driver_node-1] [2026-10-20 19:18:32][info] Current scan frequency: 10.00Hz
+[ydlidar_ros2_driver_node-1] [2026-10-20 19:18:32][info] Successfully obtained the corrected offset angle[-3.750000] from the lidar[[LIDAR_SERIAL_REDACTED]]
+[ydlidar_ros2_driver_node-1] [2026-10-20 19:18:32][info] Check status, Elapsed time 187 ms
+[ydlidar_ros2_driver_node-1] [2026-10-20 19:18:32][info] Lidar init success, Elapsed time [714]ms
+[astra_camera_node-1] [INFO] [1792495112.833473631] [camera.camera]: uvc config: vendor_id: 2bc5
+[astra_camera_node-1] product_id: 50f
+[astra_camera_node-1] width: 640
+[astra_camera_node-1] height: 480
+[astra_camera_node-1] fps: 30
+[astra_camera_node-1] serial_number: [CAMERA_SERIAL_REDACTED]
+[astra_camera_node-1] format: mjpeg
+[astra_camera_node-1] frame_id: camera_color_frame
+[astra_camera_node-1] optical_frame_id : camera_color_optical_frame
+[astra_camera_node-1]
+[astra_camera_node-1] unsupported descriptor subtype VS_COLORFORMAT
+[astra_camera_node-1] [INFO] [1792495112.840733720] [camera.camera]: open camera success
+[astra_camera_node-1] [INFO] [1792495112.850481073] [camera.camera]: set depth video mode Resolution :640x480@30Hz
+[astra_camera_node-1] format PIXEL_FORMAT_DEPTH_1_MM
+[astra_camera_node-1] [WARN] [1792495112.850501681] [camera.camera]: Publishing dynamic camera transforms (/tf) at 10 Hz
+[astra_camera_node-1] [INFO] [1792495112.851461098] [camera.camera]: set ir video mode Resolution :640x480@30Hz
+[astra_camera_node-1] format
+[astra_camera_node-1] [INFO] [1792495112.875856280] [camera.camera]: depth is started
+[astra_camera_node-1] [INFO] [1792495112.887874346] [camera.camera]: ir is started
+[astra_camera_node-1] [INFO] [1792495112.888049743] [camera.camera]: Start UVC camera
+[astra_camera_node-1] [INFO] [1792495112.898342869] [camera.camera]: set uvc mode 640x480@30 format UVC_FRAME_FORMAT_MJPEG
+[astra_camera_node-1] attempt to claim already-claimed interface 1
+[INFO] [1792495112.956819816] [farm_imu_reader]: IMU count=30 age=0.02s bad_checksum=0
+[astra_camera_node-1] [INFO] [1792495113.627425808] [camera.camera]: device  started.
+[INFO] [1792495113.971425714] [farm_imu_reader]: IMU count=55 age=0.02s bad_checksum=0
+[ydlidar_ros2_driver_node-1] [2026-10-20 19:18:34][info] [YDLIDAR] Create thread 0x954978E0
+[ydlidar_ros2_driver_node-1] [2026-10-20 19:18:34][error] Check Sum 0x60CD != 0x723C
+[ydlidar_ros2_driver_node-1] [2026-10-20 19:18:34][info] Successed to start scan mode, Elapsed time 2064 ms
+[ydlidar_ros2_driver_node-1] [2026-10-20 19:18:34][info] Scan Frequency: 10.00Hz
+[ydlidar_ros2_driver_node-1] [2026-10-20 19:18:34][info] Fixed Size: 2000
+[ydlidar_ros2_driver_node-1] [2026-10-20 19:18:34][info] Sample Rate: 20.00K
+[ydlidar_ros2_driver_node-1] [2026-10-20 19:18:34][info] Successed to check the lidar, Elapsed time 0 ms
+[ydlidar_ros2_driver_node-1] [2026-10-20 19:18:34][info] Now lidar is scanning...
+[INFO] [1792495114.986673320] [farm_imu_reader]: IMU count=79 age=0.04s bad_checksum=0
+[INFO] [1792495115.990451029] [farm_imu_reader]: IMU count=104 age=0.02s bad_checksum=0
+[INFO] [1792495117.006020651] [farm_imu_reader]: IMU count=129 age=0.02s bad_checksum=0
+[INFO] [1792495118.020910891] [farm_imu_reader]: IMU count=153 age=0.05s bad_checksum=0
+[INFO] [1792495119.025127288] [farm_imu_reader]: IMU count=178 age=0.02s bad_checksum=0
+[INFO] [1792495120.039948686] [farm_imu_reader]: IMU count=203 age=0.02s bad_checksum=0
+[INFO] [1792495121.054763072] [farm_imu_reader]: IMU count=228 age=0.02s bad_checksum=0
+[INFO] [1792495122.059249190] [farm_imu_reader]: IMU count=252 age=0.02s bad_checksum=0
+[INFO] [1792495123.061665172] [farm_imu_reader]: IMU count=276 age=0.04s bad_checksum=0
+[INFO] [1792495124.076452345] [farm_imu_reader]: IMU count=301 age=0.04s bad_checksum=0
+[INFO] [1792495125.092335734] [farm_imu_reader]: IMU count=326 age=0.02s bad_checksum=0
+[INFO] [1792495126.096037304] [farm_imu_reader]: IMU count=350 age=0.04s bad_checksum=0
+[INFO] [1792495127.110980660] [farm_imu_reader]: IMU count=375 age=0.04s bad_checksum=0
+[INFO] [1792495128.127086410] [farm_imu_reader]: IMU count=400 age=0.02s bad_checksum=0
+[INFO] [1792495129.129917258] [farm_imu_reader]: IMU count=424 age=0.04s bad_checksum=0
+[INFO] [1792495130.145195171] [farm_imu_reader]: IMU count=449 age=0.04s bad_checksum=0
+[INFO] [1792495131.161642005] [farm_imu_reader]: IMU count=474 age=0.02s bad_checksum=0
+[INFO] [1792495132.164114624] [farm_imu_reader]: IMU count=498 age=0.04s bad_checksum=0
+[INFO] [1792495133.178485941] [farm_imu_reader]: IMU count=523 age=0.04s bad_checksum=0
+[INFO] [1792495134.195077279] [farm_imu_reader]: IMU count=548 age=0.04s bad_checksum=0
+[INFO] [1792495135.198044202] [farm_imu_reader]: IMU count=572 age=0.04s bad_checksum=0
